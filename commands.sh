@@ -101,6 +101,9 @@ radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 sudo airodump-ng wlx0013eff5483f  ## fo rmonitoring 
 airodump-ng wlx0013eff5483f --encrypt wep
 airodump-ng wlx0013eff5483f -c 11 ## TO BROADCAST ESSID 
+airodump-ng wlx0013eff5483f -c 11 & wireshark ## TO BROADCAST ESSID and use wireshark for packet injection 
+
+
 
 aireplay-ng -0 0 mac -c mac_of_radio radio_name 
 airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR MODE) 
