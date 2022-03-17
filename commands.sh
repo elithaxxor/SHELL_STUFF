@@ -98,8 +98,9 @@ john --format=zip hash.txt
 radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 
 #### AIRMON-NG // SUITE ### 
+
 aireplay-ng -0 0 mac -c mac_of_radio radio_name 
-airemon-ng start external_radio 6 # the number is the channel 
+airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR MODE) 
 kismet -c radio_name  ## GETS THE MAC ADDRESS 
 
 ### IFRENAME ### 
