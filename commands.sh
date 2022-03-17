@@ -6,7 +6,7 @@
 #  Created by a-robot on 3/14/22.
 #  
 #https://api.wigle.net/
-
+#https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
 
 ## To add new user 
 useradd -r user2 
