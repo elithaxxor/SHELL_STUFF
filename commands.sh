@@ -103,6 +103,8 @@ sudo airodump-ng wlx0013eff5483f  ## fo rmonitoring
 airodump-ng wlx0013eff5483f --encrypt wep
 airodump-ng wlx0013eff5483f -c 11 ## TO BROADCAST ESSID 
 airodump-ng wlx0013eff5483f -c 11 & wireshark ## TO BROADCAST ESSID and use wireshark for packet injection 
+## find transmitter device on wireshark and set filter with pipe 
+wlan.ta == MAC || wlan.da MAC #(da = destination, ta is starting transmission) 
 
 
 airodump-ng wlx0013eff5483f --encrypt wep
@@ -118,6 +120,7 @@ airodump-ng wlx0013eff5483f --encrypt wep
 aireplay-ng -0 0 mac -c mac_of_radio radio_name 
 airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR MODE) 
 kismet -c radio_name  ## GETS THE MAC ADDRESS 
+
 
 
 ## send deauth
