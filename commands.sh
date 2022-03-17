@@ -106,6 +106,8 @@ airodump-ng wlx0013eff5483f -c 11 & wireshark ## TO BROADCAST ESSID and use wire
 ## find transmitter device on wireshark and set filter with pipe 
 wlan.ta == MAC || wlan.da MAC #(da = destination, ta is starting transmission) 
 eapol #(in wireshark filter--> it displays the handshakes from ^) https://www.youtube.com/watch?v=5guDKTc6Hak
+aircrack-ng -w 'password-list location' '.pacap location' # get pcap from wireshark ^ --> to crack the password 
+
 
 
 airodump-ng wlx0013eff5483f --encrypt wep
