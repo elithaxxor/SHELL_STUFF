@@ -325,6 +325,26 @@ cd /home/frank/the_harvester
 python3 theHarvester.py -d dedicatedglass.com -l 500 -b all
 
 
+### RECON-NG --> contains modules simular to metasploit 
+##### GREAT FOR OSNIT 
+git clone 'https://github.com/lanmaster53/recon-ng'
+workspaces add ws1 ## CERATE WORKSPACE
+show workspaces 
+workspaces select default 
+show modules 
+add domains ### USE THIS THIS TO ADD TO DATA TABLE FOR EXPLOIT 
+show domains 
+add companies 
+show companies 
+search whois # displays modules that exist for whois 
+use whois_pocs 
+show info ## displays module info and the data structure user provided 
+show # displays information to be used in console 
+show dashboard ## shows all current activities / tasks peformed 
+add # need to 
+#####################################
+
+
 #########  metasploit # ###########
 Msfconsole
 Search samba_symlink_traversal
