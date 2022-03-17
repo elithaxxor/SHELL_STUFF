@@ -105,6 +105,7 @@ airodump-ng wlx0013eff5483f -c 11 ## TO BROADCAST ESSID
 airodump-ng wlx0013eff5483f -c 11 & wireshark ## TO BROADCAST ESSID and use wireshark for packet injection 
 ## find transmitter device on wireshark and set filter with pipe 
 wlan.ta == MAC || wlan.da MAC #(da = destination, ta is starting transmission) 
+eapol #(in wireshark filter--> it displays the handshakes from ^) https://www.youtube.com/watch?v=5guDKTc6Hak
 
 
 airodump-ng wlx0013eff5483f --encrypt wep
