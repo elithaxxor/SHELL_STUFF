@@ -581,6 +581,12 @@ show dashboard ## shows all current activities / tasks peformed
 add # need to 
 #####################################
 
+###### NESSUSS ######
+# TO DISCOVER NETWORK HOSTS 
+# IDENTIFIY CRITICAL INFO / PERFORM VULN SCAN 
+# GENERATE REPORTS 
+https://www.tenable.com/products/nessus
+https://localhost:8834/
 
 
 ######## OPEN SSL #######
