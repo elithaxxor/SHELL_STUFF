@@ -477,6 +477,9 @@ sudo macchanger -m newMacfromabove nicNonMonitormode
 sudo ifconfig nicNonMonitorMode up 
 
 
+
+
+##################### AIRGEDDON ############
 ### BYPASSING WPA WIRELESS SECURITY (BRUTEFORCE WIFI PIN, RATHER THAN WPA)
 # airgeddon (wireless attack framework including BULLY) must use  pixiedust too (not in airegeddon)
 # https://nulb.app/x49tg 
@@ -486,6 +489,9 @@ sudo ifconfig nicNonMonitorMode up
 git clone 'https://github.com/v1s1t0r1sh3r3/airgeddon'
 sudo ./airgeddon.sh  ## setup config 
 option 2, then option 8, then option 4 (to explore)
+
+
+
 
 
 ######## OPEN SSL #######
