@@ -248,7 +248,7 @@ airodump-ng wlx0013eff5483f --encrypt wep
 
 
 
-#### BRUTE FORCE ####
+#### BRUTE FORCE #### PASSWORDS 
 ## BRUTESPRAY --> requries nmap fiel
 apt install brutespray 
 brutespray --file nmapout.xml --threads 5
@@ -263,6 +263,20 @@ sudo apt-get install hydra-gtk
 sudo apt-get purge hydra-gtk && sudo apt-get autoremove && sudo apt-get autoclean
 hydra -L users.txt -P passwords.txt location_pass.txt 
 pantor ftp_login host=ip , user=users.txt password- pass.txt 0=users.txt 1=passwords.txt 
+
+
+
+## USE CUPS AND THE MENTALIST TOGETHER TO GENERATE CUSTOM PASSWORD LISTS. 
+#### USE CUPS TO CREATE PASSWORD LIST WITH GIVEN USER INPUT (NAME, COMPANY BDATE ETC... ) 
+git clone https://github.com/Mebus/cupp.git
+nano cupp.config
+python cupp.py -i
+### USE THE MENTALIST (GUI) TO CREATE CUSTOM #'S AND SPECIAL CHARICTERS TO PASSWORD LIST GENERATED FROM CUPP
+sudo apt install git python3-setuptools python3-tk
+git clone https://github.com/sc0tfree/mentalist
+cd mentalist/
+sudo python3 setup.py install
+
 
 
 
