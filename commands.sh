@@ -9,7 +9,6 @@
 ## To add new user 
 useradd -r user2 
 
-
 ## basics
 iwevent -- to get wireless events
 iwgetid - reports curretn essid / ap
@@ -281,6 +280,8 @@ sudo python3 setup.py install
 
 
 ###### DEEP OSNIT ### THE HARVESTER #######
+
+wigle.net
 cd /home/frank/the_harvester
 python3 theHarvester.py -d dedicatedglass.com -l 500 -b all
 
