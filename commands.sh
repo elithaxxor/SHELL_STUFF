@@ -280,7 +280,7 @@ sudo python3 setup.py install
 
 
 ###### DEEP OSNIT ### THE HARVESTER #######
-
+## PUBLIC INFO ON BUSINESS NETWORKS 
 wigle.net
 cd /home/frank/the_harvester
 python3 theHarvester.py -d dedicatedglass.com -l 500 -b all
