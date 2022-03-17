@@ -7,7 +7,8 @@
 #  
 #https://api.wigle.net/
 #https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
-
+# grabify.link  ## --> track usersr 
+# shodan.io ## --> device info 
 ## CANARY TOKENS
 canarytokens.com/generate 
 
