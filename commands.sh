@@ -118,6 +118,16 @@ ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV
 
 ###########################
 
+## USER RECON --> ACTIVE SOCIAL MEDIA PAGES ##
+git clone 'https://github.com/issamelferkh/userrecon' 
+./userrecon.sh 
+
+git clone 'https://github.com/sherlock-project/sherlock'
+cd sherlock
+python3 -m pip install -r requirements.txt
+python3 sherlock user123
+python3 sherlock user1 user2 user3
+
 
 ########################
 ### MANGLE TTL 
