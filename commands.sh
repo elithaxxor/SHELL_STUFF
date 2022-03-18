@@ -5,6 +5,11 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
+
+
+#### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
+# https://inteltechniques.com/ 
+
 #https://api.wigle.net/
 #https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
 # grabify.link  ## --> track usersr 
