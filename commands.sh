@@ -44,12 +44,27 @@ useradd -r user2
 iwevent -- to get wireless events
 iwgetid - reports curretn essid / ap
 
+
+####################################
+#######  COVERING TRACKS ############
 ### PROXYCHAINS (COVERRING TRACKS) ###
 # EDIT CONFIG /ETC/PROXYCHAINS.CONF
 sudo apt-get install -y proxychains
 proxychains nmap ip/24 
 proxychains tor 
 
+## NOISY--> diguise packets hidden behind prexisting servers (by generaitng random traffic)#
+## --> best if used if you think someone is spying on you or the network 
+pip install requests
+git clone https://github.com/1tayH/noisy.git
+cd noisy
+
+python noisy.py --help
+nano config.json
+## ADD SITES TO CONFIG FILE 
+python noisy.py --config config.json
+
+####################################
 
 
 ########################
