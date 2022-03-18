@@ -19,6 +19,7 @@
 # https://nvd.nist.gov/developers/vulnerabilities
 # https://www.exploit-db.com/
 # https://sur.ly/i/breachforums.com/
+# namecheckup.com ## --> osnit 
 
 ## CANARY TOKENS
 canarytokens.com/generate 
