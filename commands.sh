@@ -9,6 +9,8 @@
 #https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
 # grabify.link  ## --> track usersr 
 # shodan.io ## --> device info 
+# https://nvd.nist.gov/developers/vulnerabilities
+# https://www.exploit-db.com/
 ## CANARY TOKENS
 canarytokens.com/generate 
 
