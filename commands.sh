@@ -18,6 +18,7 @@
 # shodan.io ## --> device info 
 # https://nvd.nist.gov/developers/vulnerabilities
 # https://www.exploit-db.com/
+# securityfocus.com
 # https://sur.ly/i/breachforums.com/
 # namecheckup.com ## --> osnit 
 
