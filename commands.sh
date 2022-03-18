@@ -66,6 +66,20 @@ hciconfig dev_name up
 sdptool browse MAC_ADDRESS 
 btscanner # launches GUI interface 
 
+#### BETTERCAP (ettercap replacement) ####
+# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
+apt install golang
+go get github.com/bettercap/bettercap
+cd $GOPATH/src/github.com/bettercap/bettercap
+make build
+sudo make install
+sudo bettercap
+192.168.0.0/24 > 192.168.0.37  » net.show
+192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
+192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
+192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
+192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
+
 ###########################
 
 
