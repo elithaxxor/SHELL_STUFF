@@ -584,6 +584,26 @@ show dashboard ## shows all current activities / tasks peformed
 add # need to 
 #####################################
 
+
+####### NIKTO VULN-SCANNER ######### 
+# https://github.com/sullo/nikto/wiki
+# http://bit.ly/NiktoScan
+
+brew install nikto 
+sudo apt install nikto 
+## SSL 
+nikto -h domain.org -ssl # ssl scan 
+ipcalc local_ip_domain 
+## IP ADDRESS FROM NMAP 
+nmap -p local_ip_doman/24 -oG nmap_out.txt 
+cat nmap_out.txt | awk '/Up$/{print $2}' | nikto -h | cat >> targetIP.txt # awk returns just IP address.. may ahve to play around with $ val 
+cat targetIP.txt 
+nikto -h targetIP.txt 
+## Webserver 
+nikto -h www.hell.com | cat >> niktoResults.txt 
+nikto -h www.domain.com -Format msf+ 
+
+
 ###### NESSUSS ######
 # TO DISCOVER NETWORK HOSTS 
 # IDENTIFIY CRITICAL INFO / PERFORM VULN SCAN 
