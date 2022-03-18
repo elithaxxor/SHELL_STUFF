@@ -67,7 +67,9 @@ sdptool browse MAC_ADDRESS
 btscanner # launches GUI interface 
 
 #### BETTERCAP (ettercap replacement) ####
+## https://www.bettercap.org/legacy/ 
 # https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
+sudo apt-get install build-essential ruby-dev libpcap-dev
 apt install golang
 go get github.com/bettercap/bettercap
 cd $GOPATH/src/github.com/bettercap/bettercap
