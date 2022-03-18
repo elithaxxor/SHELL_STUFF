@@ -69,6 +69,14 @@ btscanner # launches GUI interface
 #### BETTERCAP (ettercap replacement) ####
 ## https://www.bettercap.org/legacy/ 
 # https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
+
+git clone https://github.com/evilsocket/bettercap
+cd bettercap
+bundle install
+gem build bettercap.gemspec
+sudo gem install bettercap*.gem
+
+
 sudo apt-get install build-essential ruby-dev libpcap-dev
 apt install golang
 go get github.com/bettercap/bettercap
