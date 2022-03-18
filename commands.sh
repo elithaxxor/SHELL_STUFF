@@ -118,16 +118,6 @@ ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV
 
 ###########################
 
-## USER RECON --> ACTIVE SOCIAL MEDIA PAGES ##
-git clone 'https://github.com/issamelferkh/userrecon' 
-./userrecon.sh 
-
-git clone 'https://github.com/sherlock-project/sherlock'
-cd sherlock
-python3 -m pip install -r requirements.txt
-python3 sherlock user123
-python3 sherlock user1 user2 user3
-
 
 ########################
 ### MANGLE TTL 
@@ -510,6 +500,9 @@ cd skiptracer
 pip install -r requirements.txt
 python skiptracer.py -l (phone|email|sn|name|plate)
  
+ ######################################
+
+ 
 ############### SOCIAL MEDIA ######################
 ######## OSNIT ###########
 ### Social media accounts#####
@@ -548,6 +541,19 @@ twint --help
 sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
 sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
 sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
+
+
+
+## USER RECON --> ACTIVE SOCIAL MEDIA PAGES ##
+git clone 'https://github.com/issamelferkh/userrecon' 
+./userrecon.sh 
+
+git clone 'https://github.com/sherlock-project/sherlock'
+cd sherlock
+python3 -m pip install -r requirements.txt
+python3 sherlock user123
+python3 sherlock user1 user2 user3
+
 
 ######################################
 
