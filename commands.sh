@@ -448,6 +448,24 @@ show dashboard ## shows all current activities / tasks peformed
 add # need to 
 #####################################
 
+#####################################
+#### TWINT --- TWITTER OSNIT 
+# https://null-byte.wonderhowto.com/how-to/mine-twitter-for-targeted-information-with-twint-0193853/
+# [MAN] https://github.com/twintproject/twint
+pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+git clone https://github.com/twintproject/twint.git
+cd twint
+pip3 install -r requirements.txt
+pip3 install twint
+
+sudo twint -h
+twint --help 
+sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
+sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
+sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
+
+######################################
+
 
 #########  metasploit # ###########
 Msfconsole
