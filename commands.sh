@@ -669,7 +669,7 @@ chmod +x install.sh
 iwconfig wlan0 mode monitor
 ip a
 
-######$#######################
+######$#############################################################
 
 ###3 ROUTERSPLOIT --> ROUTERS, WEBCAM, ANY BROADCASTED DEVICE ### 
 
@@ -703,6 +703,30 @@ show options
 set target <target router IP>
 check
 run 
+
+
+#### Basic Enumeration With Metasploit and Nmap  #### 
+### use netdiscover or arp -a for local network
+ls -al /usr/share/nmap/scripts/  
+netdiscover -i eth0 -r 192.168.50.xxx/24 
+nmap -sn 192.168.50.xxx/24 
+# look for target OS and service versions (pay attention to service versions for exoit and vuln scan)
+# pay attention to ftp timeout 
+# pay attentin to CVE number--> look online for exploit detials 
+nmap 192.168.50.TARGET_IP # scans 1000 of most common ports 
+nmap  -sS -A -T1 -p- 92.168.50.TARGET_IP -oN target_info_nmap.txt 
+ls -al /usr/share/nmap/scripts/ | grep -e "ftp-" 
+nmap -sV -p 21  192.168.50._TARGET_IP --script /usr/share/nmap/scripts/FTP_SCRIPT_DUMMY
+searchsploit FTP_SCRIPT_DUMMY 
+msfconsole 
+search FTP_SCRIPT_DUMMY 
+use FOUND_MODULE_FROM_MFS 
+set RHOSTS 192.168.TARGET_IP 
+run 
+
+# if root privledage is granted, start exexuting 
+#############################################################################
+
 
 ######$#######################
 
