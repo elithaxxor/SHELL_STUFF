@@ -18,6 +18,8 @@
 # shodan.io ## --> device info 
 # https://nvd.nist.gov/developers/vulnerabilities
 # https://www.exploit-db.com/
+# https://sur.ly/i/breachforums.com/
+
 ## CANARY TOKENS
 canarytokens.com/generate 
 
