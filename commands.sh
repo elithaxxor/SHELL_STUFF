@@ -610,8 +610,59 @@ cd nikto/program
 # Run using the shebang interpreter
 ./nikto.pl -h http://www.example.com
 # Run using perl (if you forget to chmod)
+
+
 #### ONENVAS (NESSUS CLONE) VULN SCAN ### 
 apt install openvas 
+
+######$#######################
+
+### LAZY SCRIPT --> WIFI VULN ###
+# https://null-byte.wonderhowto.com/how-to/hack-wi-fi-networks-more-easily-with-lazy-script-0185764/
+cd
+git clone https://github.com/arismelachroinos/lscript.git
+cd lscript
+chmod +x install.sh
+./install.sh
+iwconfig wlan0 mode monitor
+ip a
+
+######$#######################
+
+###3 ROUTERSPLOIT --> ROUTERS, WEBCAM, ANY BROADCASTED DEVICE ### 
+
+# https://null-byte.wonderhowto.com/how-to/seize-control-router-with-routersploit-0177774/
+# AutoPwn 
+#
+sudo apt-get install python3-pip requests paramiko beautifulsoup4 pysnmp
+git clone https://github.com/threat9/routersploit
+cd routersploit
+python3 -m pip install -r requirements.txt
+python3 rsf.py
+
+#### (Install for mac os)
+git clone https://github.com/threat9/routersploit
+cd routersploit
+sudo easy_install pip
+sudo pip install -r requirements.txt
+#
+cd
+cd routersploit
+sudo python ./rsf.py
+##
+show all # Everything on RS 
+# scanning a target 
+use scanners/autopwn 
+show options ## shows the variales chosen for module seleted ^ 
+set target xxx.xxx.xxx
+run 
+use exploits/routers/3com/3cradsl72_info_disclosure ## to run specific exploit after scan run 
+show options
+set target <target router IP>
+check
+run 
+
+######$#######################
 
 ## ARP SCAN 
 echo ('enter pass:')
