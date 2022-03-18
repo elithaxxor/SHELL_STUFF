@@ -463,24 +463,6 @@ show dashboard ## shows all current activities / tasks peformed
 add # need to 
 #####################################
 
-#####################################
-#### TWINT --- TWITTER OSNIT 
-# https://null-byte.wonderhowto.com/how-to/mine-twitter-for-targeted-information-with-twint-0193853/
-# [MAN] https://github.com/twintproject/twint
-pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint
-git clone https://github.com/twintproject/twint.git
-cd twint
-pip3 install -r requirements.txt
-pip3 install twint
-
-sudo twint -h
-twint --help 
-sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
-sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
-sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
-
-######################################
-
 
 #########  metasploit # ###########
 Msfconsole
@@ -515,7 +497,7 @@ cd skiptracer
 pip install -r requirements.txt
 python skiptracer.py -l (phone|email|sn|name|plate)
  
-
+############### SOCIAL MEDIA ######################
 ######## OSNIT ###########
 ### Social media accounts#####
 Pyhton3 sherlock.py username
@@ -526,6 +508,36 @@ https://www.nirsoft.net/ (look thins up, powerful tool)
 http://geoiplookup.net/ ### GEO IP LCOATIONS
 tracemyip.org
 inteltechniques.com 
+
+### Osintgram -- INSTAGRAM OSNIT 
+## echo the ig dummy user account and set to .conf file (#3)
+## need to create username.conf, pw.conf and settings.json 
+git clone 'https://github.com/Datalux/Osintgram' 
+pip3 install -r requirements.txt 
+echo 'ig_dummyacct' > username.conf 
+echo 'ig_dummyPass' > pw.conf
+echo '{},' > settings.json 
+python3 main.py ig_TARGET 
+list # displays available commands 
+
+
+#### TWINT --- TWITTER OSNIT 
+# https://null-byte.wonderhowto.com/how-to/mine-twitter-for-targeted-information-with-twint-0193853/
+# [MAN] https://github.com/twintproject/twint
+pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+git clone https://github.com/twintproject/twint.git
+cd twint
+pip3 install -r requirements.txt
+pip3 install twint
+
+sudo twint -h
+twint --help 
+sudo twint -g="34.0343535, -117.23414142,2km" --search 'fish shack' --email --phone  ## find discussinon about a business 
+sudo twint -u realdonaldtrump -g='34.39343535, -118.234234252,2km'
+sudo twint -u realdonaldtrump --search 'loser' -o trump.txt 
+
+######################################
+
 
 ### to create fake AP ###
 https://cybergibbons.com/security-2/quick-and-easy-fake-wifi-access-point-in-kali/
