@@ -247,12 +247,12 @@ apt install kali-linux-everything
 
 #############################
 nmap -sV -pN xx # basic nmap scan 
+nmap -p local_ip_doman/24 -oG nmap_out.txt 
 nmap 192.xxx -oX /dir/file.xml ## to output nmap to .xml 
 nmap -A -Pn xxx/0/24 # os scan 
 nmap -sA xxxx # tcp-ack scan --> unfilterd and filtered ports
 nmap -sI zombiehost.com domain.com 
 nmap -sW xxx # window scan 
-
 nmap -sV host,com -scrip dns-brute ## chain script 
 
 
