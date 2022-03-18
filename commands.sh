@@ -52,6 +52,24 @@ proxychains tor
 
 
 
+########################
+### OSNIT / SPY BLUETOOTH #### 
+## unlike wifi, bluetooth negotates a key ones and stores it. this happens on first handshake, making packet inseretion and listneing harder 
+# https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
+hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
+man hciconfig 
+man hcitool 
+man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
+man btscanner 
+
+hciconfig dev_name up 
+sdptool browse MAC_ADDRESS 
+btscanner # launches GUI interface 
+
+###########################
+
+
+########################
 ### MANGLE TTL 
 # WINDOWS 
 netsh int ipv4 set glob defaultcurhoplimit=65
@@ -60,8 +78,7 @@ netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT
 
 ### LINUX (default ttl=64)
 iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
-
-
+########################
 
 OPEN SSL ENCRYPTION
 Private key
