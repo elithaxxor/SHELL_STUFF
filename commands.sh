@@ -399,6 +399,26 @@ git clone https://github.com/sc0tfree/mentalist
 cd mentalist/
 sudo python3 setup.py install
 
+#### PHOTON SCANNER ######
+# https://null-byte.wonderhowto.com/how-to/use-photon-scanner-scrape-web-osint-data-0194420/
+## photon focuses on data for password hasshes, api keys, and 3rd party ninja query. 
+#[DOCS] https://github.com/s0md3v/Photon
+# -t threads , --stdout, --ninja, --wayback (use archive.org for old dirs), --dns (dns dump)
+pip install tld requests
+git clone https://github.com/s0md3v/Photon.git
+cd Photon
+python3 photon.py -h
+
+sudo python3 photon.py -u 'domain.com' --verbose 
+sudo python3 photon.py -u 'domain.com' --keys --dns -t 3
+
+python3 photon.py -u https://www.priceline.com/ --dns
+python3 photon.py -u https://www.pbs.org/ --keys -t 10 -l 3 ### EXTRACT SECRET KEYS 
+python3 photon.py -u https://www.pbs.com/ --keys -t 10 -l 1 --ninja ### NINJA MODE 
+
+
+#####################################
+
 
 
 
