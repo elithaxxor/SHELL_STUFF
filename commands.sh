@@ -468,7 +468,7 @@ show info ## displays module info and the data structure user provided
 show # displays information to be used in console 
 show dashboard ## shows all current activities / tasks peformed 
 add # need to 
-#####################################
+#########################################################################
 
 
 #########  metasploit # ###########
@@ -480,6 +480,23 @@ Set option IP (look for required)
 Exploit (to run export)
 
 
+###### SEARCHSPLOIT --->> ALLOWS ACCESS TO EXPOOIT-DB DATABASE ####
+# https://github.com/offensive-security/exploitdb
+git clone 'https://github.com/offensive-security/exploitdb'
+searchsploit -h
+
+# kali 
+sudo apt -y install exploitdb
+sudo apt -y install exploitdb-bin-sploits exploitdb-papers
+
+# ubuntu
+sudo git clone https://github.com/offensive-security/exploitdb.git /opt/exploitdb
+sudo ln -sf /opt/exploitdb/searchsploit /usr/local/bin/searchsploit
+
+# darwin 
+brew update && brew install exploitdb
+
+########################################################################
 
 
 ######## LOCALIZED INFO ######
