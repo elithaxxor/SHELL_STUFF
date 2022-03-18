@@ -183,6 +183,36 @@ sslyze --regular website or ip
 nslookup IP >> nslookup.txt
 http://geoiplookup.net/
 
+
+########## DNS LOOKUPS ############
+## host, nslookup, dig 
+host domain.com ## returns host IP and mailserver 
+host -t ns domain.com 
+host -t mx domain.com 
+host ip_address # reverse dns 
+
+nslookup domain.com 
+nslookup  # to enter nslookup console 
+# webserver
+set type=ns 
+domain.com 
+# mail server 
+set type=mx
+domain.com 
+
+dig --help 
+dig domain.com 
+dig domain.com -t mx 
+dig domain.com -t ns 
+dig domain.com AAAA # ipv6 addresses 
+
+
+##################################
+
+
+
+
+
 #### JOHN THE RIPPER ### 
 rar2john $HASHED_FILE
 rar2john $HASHED_FILE > hash.txt 
