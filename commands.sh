@@ -21,6 +21,9 @@
 # https://sur.ly/i/breachforums.com/
 # namecheckup.com ## --> osnit 
 
+## NMAP SCRIPT LOCATION 
+ls -al /usr/share/nmap/scripts/ 
+
 ## CANARY TOKENS
 canarytokens.com/generate 
 
