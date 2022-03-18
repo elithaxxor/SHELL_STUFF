@@ -84,6 +84,14 @@ cd $GOPATH/src/github.com/bettercap/bettercap
 make build
 sudo make install
 sudo bettercap
+
+##
+bettercap 
+ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon off 
+ble.show 
+ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+##
 192.168.0.0/24 > 192.168.0.37  » net.show
 192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
 192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
