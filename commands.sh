@@ -619,6 +619,8 @@ apt install openvas
 
 ### LAZY SCRIPT --> WIFI VULN ###
 # https://null-byte.wonderhowto.com/how-to/hack-wi-fi-networks-more-easily-with-lazy-script-0185764/
+# https://github.com/arismelachroinos/lscript
+
 cd
 git clone https://github.com/arismelachroinos/lscript.git
 cd lscript
