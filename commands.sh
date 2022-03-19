@@ -73,6 +73,26 @@ nano config.json
 python noisy.py --config config.json
 
 ####################################
+################################################
+#### TO LOOK UP BREACHED PASSWORDS AND USER INFO ##### 
+git clone https://github.com/khast3x/h8mail.git
+apt-get install nodejs
+cd h8mail
+pip3 install -r requirements.txt
+python3 ./h8mail.py -h
+python3 h8mail.py -h
+python3 h8mail.py -t email@tosearch.com -bc 'location_of_your_file/BreachCompilation' --local
+
+
+theharvester -d priceline.com -l 1000 -b pgp
+nano targets.txt
+python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
+
+
+################################################
+
+
+
 
 
 ########################
