@@ -21,6 +21,7 @@
 # securityfocus.com
 # https://sur.ly/i/breachforums.com/
 # namecheckup.com ## --> osnit 
+# https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
 
 ## NMAP SCRIPT LOCATION 
 ls -al /usr/share/nmap/scripts/ 
