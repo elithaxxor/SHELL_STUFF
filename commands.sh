@@ -83,7 +83,7 @@ python3 ./h8mail.py -h
 python3 h8mail.py -h
 python3 h8mail.py -t email@tosearch.com -bc 'location_of_your_file/BreachCompilation' --local
 
-
+### TO RETURN DOMAIN EMAILS ####
 theharvester -d priceline.com -l 1000 -b pgp
 nano targets.txt
 python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
