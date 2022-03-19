@@ -157,6 +157,24 @@ sudo ./sparrow-wifi.py
 
 ### KISMET - FIND ALL THE NETWORK HOST, AND DEVICE MANU
 
+
+##### DEATH AND LIMIT BANDWIDTH ON NETWORK ############
+## EVIL LIMITER--> TO DE AUTH AND KICK OFF NETWORK USERS ###
+git clone https://github.com/bitbrute/evillimiter.git
+cd evillimiter
+sudo python3 setup.py install
+sudo evillimiter
+scan
+limit 1,2,3,4,5,6 200kbit ## LIMIT OR BLOCK NETWORK USERS 
+block 3
+hosts
+free all
+
+sudo wireshark ## to watch network traffic 
+#####################################################
+
+
+
 #### TO MIRROR WEBPAGE DATA (EXACT COPY)
 sudo apt install httrack webhttrack
 httprack -w domain.com
