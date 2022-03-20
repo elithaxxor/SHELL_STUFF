@@ -194,6 +194,15 @@ sudo wireshark ## to watch network traffic
 #####################################################
 
 
+################################################
+
+### AIRGEDDON --> DEAUTH USERS WHEN NOT ON ROUTER 
+git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git
+cd airgeddon
+sudo bash airgeddon.sh
+################################################
+
+
 
 #### TO MIRROR WEBPAGE DATA (EXACT COPY)
 sudo apt install httrack webhttrack
