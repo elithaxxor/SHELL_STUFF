@@ -1,0 +1,1 @@
+auto git cloner, use sources.txt to feed .sh 
