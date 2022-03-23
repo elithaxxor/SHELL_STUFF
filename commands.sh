@@ -44,6 +44,11 @@ sudo rm auth.log
 shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
 truncate -s 0 /var/log/auth.log 
 
+## make abunch of differnt APS 
+ sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.txt ## update data.txt with spooffed ap 
+airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+
+
 
 ## To add new user 
 useradd -r user2 
