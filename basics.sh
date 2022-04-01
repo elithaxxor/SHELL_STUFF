@@ -59,6 +59,16 @@ M_NAMES="FRANK JESSIE GRIMES HOMER"
 ## set ootenetial arguemnt sgto potential paramaters
 
 
+### FILESYSTEM ENUM - Grep etc ### #
+cat /etc/ssh/sshd_config | grep port
+cat /etc/ssh/sshd_config | wc -l # word count 
+ifconfig | grep broadcast 
+grep -n sample_search sample_file.txt # returns sample_search with corrosponding color code 
+grep -i sample_search sample_file.txt # returns sample_search with NO CAPS SENSITIVE 
+
+
+
+
 
 
 ## FILE MANIPULATION
