@@ -37,6 +37,7 @@ set password [index $argv 2]
 ## add express vpn 
 function hideMyTracks() {
 proxychains firefox
+prxychains tor 
 }
 
 function startSSH(){
@@ -88,7 +89,7 @@ python -m pip install --upgrade pip
 sudo apt install chrontab -y
 sudo apt install expect -y
 
-
+	sudo apt install tor -y 
     sudo apt update -y
     sudo apt upgrade -y
     sudo apt dist-upgrade -y
