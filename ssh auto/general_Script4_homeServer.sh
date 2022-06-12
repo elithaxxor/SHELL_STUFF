@@ -14,6 +14,7 @@ set timeout=20
 
 function scanNetwork {
 netstat 
+netstat -rn 
 nc 
 }
 
