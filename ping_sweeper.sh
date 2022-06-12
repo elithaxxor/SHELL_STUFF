@@ -22,8 +22,9 @@ function pingSweep(){
 	done 
 }
 
-function simpleNetworkScan {
+function simpleNetworkScan() {
 	netstat
+	netstat -rn
 	ns 
 }
 
