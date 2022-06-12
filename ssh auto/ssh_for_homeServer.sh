@@ -104,7 +104,7 @@ sudo apt install wget
     apt install mlocate  -y
     apt install locate  -y
     sudo updatedb -y
-    
+    sudo apt install dnsutils
     sudo apt install nginx 
     sudo apt install netcat  -y
     sudo apt install netstat -
