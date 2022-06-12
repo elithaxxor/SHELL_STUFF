@@ -41,6 +41,9 @@ function StartUp(){
     sudo apt install cifs-utils -y
     apt install mlocate  -y
     apt install locate  -y
+    sudo apt install netcat 
+    sudo apt install netstat 
+    
     apt-get install network-manager -y
     sudo updatedb -y
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
