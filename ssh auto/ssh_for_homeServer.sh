@@ -41,8 +41,9 @@ function StartUp(){
     sudo apt install cifs-utils -y
     apt install mlocate  -y
     apt install locate  -y
-    sudo apt install netcat 
-    sudo apt install netstat 
+    sudo updatedb -y
+    sudo apt install netcat  -y
+    sudo apt install netstat -y
     
     apt-get install network-manager -y
     sudo updatedb -y
@@ -78,6 +79,7 @@ function sshFileTransfer() {
 function grabNetworkStats*() {
 sudo arp -a
 sudo netstat 
+sudo nc 
 }
 
 
