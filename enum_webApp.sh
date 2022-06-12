@@ -19,6 +19,13 @@ function sys_update(){
 	sudo apt-get autoremove && sudo apt-get autoclean -y
 	sudo apt install dnsutils -y
 	sudo apt install eyewitness -y
+	
+		    sudo apt install netcat  -y
+	    sudo apt install netstat -
+	    apt-get install network-manager -y
+	        sudo apt install dnsutils
+    sudo apt install nginx 
+
 	echo "Update Log: " > apt_log.txt
 	date >> apt_log.txt
 }
