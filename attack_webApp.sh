@@ -30,6 +30,7 @@ function Get_Clone(){
     git clone 'https://github.com/aboul3la/Sublist3r'
     git clone 'https://github.com/NicolasSiver/http-probe'
     git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
+    git clone "https://github.com/darkoperator/dnsrecon" 
      
 }
 
@@ -53,6 +54,7 @@ function getIPfromDNS()
     $(netcat $website) 
     $(host $website) 
     $(dig $website) 
+    $(dnsrecon $website) 
 }
 
 function curlSite() {
