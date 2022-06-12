@@ -29,7 +29,7 @@ function simpleNetworkScan() {
 }
 
 
-function isServerUp {
+function isServerUp() {
 if [[ $(nc -z localhost ${NC_PORT}) -eq 0 ]]; then
 	echo "Tomcat is up"
     echo $(NC_PORT) 
@@ -37,6 +37,11 @@ else
 	echo "Tomcat is shutdown"
     echo $(NC_PORT) 
 fi
+}
+
+function timePacketTrip() {
+	ping localhost 
+	traceroute localhost
 }
 
 
