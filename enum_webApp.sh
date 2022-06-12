@@ -18,10 +18,31 @@ express = "https://www.expressvpn.works/clients/linux/expressvpn_3.25.0.13-1_amd
 _devInfo01 = $(powermetrics)
 _devInfo02 = $(Infix -Fxz) 
 
+DIRS=$(ls *.txt)
+_broadcast = $(ifconfig | grep broadcast)
+_inet = $(ifconfig | grep inet)
+_mac = $(ifconfig | grep mac)
+_radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
+_ip_addr = $(ip addr) 
+_usb = $(lsusb) 
+_mac = $(ifconfig | grep mac)
+
+DIRS=$(ls *.txt)
+broadcast = $(ifconfig | grep broadcast)
+
+
+
+
 
 function show_host() {
-echo($_devInfo01) 
-echo($_devInfo02)
+	echo($_devInfo01) 
+	echo($_devInfo02)
+	echo($_mac) 
+	echo($_inet)
+	echo($_ip_addr)
+	echo($_usb )
+	echo($_mac)
+
 }
 
 function sys_update(){
