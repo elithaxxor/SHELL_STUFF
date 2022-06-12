@@ -46,8 +46,24 @@ function startSSH(){
 function firewallUp() {
 sudo ufw logging on
 sudo ufw enable
-Sudo ufw
+Sudo ufw allow ssh
 sudo ufw status
+sudo ufw allow http #80
+ sudo ufw allow https ##443
+ sudo ufw allow 1920:1935/tcp
+  sudo ufw allow 1920:1935/udp
+
+ 
+}
+
+function firewallAllAccess() {
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+}
+
+function firewallAllAccess() {
+sudo ufw default allow incoming
+sudo ufw default allow outgoing
 }
 
 
