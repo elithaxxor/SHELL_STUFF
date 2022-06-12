@@ -42,6 +42,7 @@ function StartUp(){
     apt install mlocate  -y
     apt install locate  -y
     sudo updatedb -y
+    sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
 
     sudo apt-get install -y squashfs-tool -y
     Infix -Fxz
