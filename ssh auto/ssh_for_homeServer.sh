@@ -43,7 +43,19 @@ function startSSH(){
     
 }
 
+function firewallUp() {
+sudo ufw logging on
+sudo ufw enable
+Sudo ufw
+sudo ufw status
+}
+
+
 function StartUp(){
+python -m pip install --upgrade pip
+sudo apt install chrontab -y
+sudo apt install expect -y
+
     sudo apt update -y
     sudo apt upgrade -y
     sudo apt dist-upgrade -y
@@ -55,14 +67,13 @@ function StartUp(){
     apt install mlocate  -y
     apt install locate  -y
     sudo updatedb -y
+    
     sudo apt install nginx 
     sudo apt install netcat  -y
     sudo apt install netstat -
     apt-get install network-manager -y
     systemctl start NetworkManager.service  ##starts NMCLI 
     systemctl enable NetworkManager.service ## sets NMCLI start with system 
-    
-
     sudo updatedb -y
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
 
@@ -126,6 +137,13 @@ _mac = $(ifconfig | grep mac)
 _radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 _ip_addr = $(ip addr) 
 _usb = $(lsusb) 
+_mac = $(ifconfig | grep mac)
+
+
+
+DIRS=$(ls *.txt)
+broadcast = $(ifconfig | grep broadcast)
+
 
 
 _devInfo01 = $(powermetrics)
