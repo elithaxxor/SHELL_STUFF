@@ -55,6 +55,8 @@ function StartUp(){
 python -m pip install --upgrade pip
 sudo apt install chrontab -y
 sudo apt install expect -y
+pyenv install 3.8.9
+pyenv shell 3.8.9 n
 
     sudo apt update -y
     sudo apt upgrade -y
