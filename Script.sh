@@ -14,12 +14,22 @@
 
 
 website = "enter the site here"
+function sys_update(){
+	sudo apt-get update && sudo apt-get upgrade -y 
+	## remove unused dependacncies 
+	sudo apt-get autoremove && sudo apt-get autoclean
+	sudo apt install dnsutils	
+	echo "Update Log: " > apt_log.txt
+	date >> apt_log.txt
+}
+
 
 function Get_Clone(){
     echo "Getting Dependencies"
     git clone 'https://github.com/aboul3la/Sublist3r'
     git clone 'https://github.com/NicolasSiver/http-probe'
     git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
+     
 }
 
 
@@ -38,11 +48,10 @@ function Mkdirs(){
 }
 
 
-
-
 function getIPfromDNS() 
     $(netcat $website) 
     $(host $website) 
+    $(dig $website) 
 }
 
 function curlSite() {
@@ -54,14 +63,6 @@ function curlSite() {
 	httrack -w $website
 	}
 
-function sys_update(){
-	sudo apt-get update && sudo apt-get upgrade -y 
-	## remove unused dependacncies 
-	sudo apt-get autoremove && sudo apt-get autoclean
-	## create log file 
-	echo "Update Log: " > apt_log.txt
-	date >> apt_log.txt
-}
 
 
 
