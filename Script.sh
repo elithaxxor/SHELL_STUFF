@@ -15,6 +15,31 @@
 
 website = "enter the site here"
 
+function Get_Clone(){
+    echo "Getting Dependencies"
+    git clone 'https://github.com/aboul3la/Sublist3r'
+    git clone 'https://github.com/NicolasSiver/http-probe'
+    git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
+}
+
+
+function Mkdirs(){
+    if [! -d "third_levels"]; then
+        mkdir third_levels
+    fi
+    
+    if [! -d "scans"]; then
+        mkdir scans
+    fi
+    
+    if [! -d "eyewitness"]; then
+        mkdir eyewitness
+    fi
+}
+
+
+
+
 function getIPfromDNS() 
     $(netcat $website) 
     $(host $website) 
@@ -39,33 +64,11 @@ function sys_update(){
 }
 
 
-function Get_Clone(){
-    echo "Getting Dependencies"
-    git clone 'https://github.com/aboul3la/Sublist3r'
-    git clone 'https://github.com/NicolasSiver/http-probe'
-    git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
-}
-
 
 # https://dnsdumpster.com/
-
 echo ('enter pass:')
 read pass
 $(arp-scan -l | grep Raspberry | awk '{print $1}') root $pass
-
-function Mkdirs(){
-    if [! -d "third_levels"]; then
-        mkdir third_levels
-    fi
-    
-    if [! -d "scans"]; then
-        mkdir scans
-    fi
-    
-    if [! -d "eyewitness"]; then
-        mkdir eyewitness
-    fi
-}
 
 
 pwd = $(pwd)
@@ -83,8 +86,6 @@ git clone "https://github.com/FortyNorthSecurity/EyeWitness"
 wget https://github.com/aboul3la/Sublist3r/archive/master.zip
 unzip master.zip
 ./sublist3r.py -d $website
-
-
 
 echo "starting sub-domin grab"
 sublist3r -d $1 -o final.txt
