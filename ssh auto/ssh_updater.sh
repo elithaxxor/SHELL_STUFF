@@ -2,8 +2,8 @@
 
 HOST='192.168.50.1'
 USER='frank'
-PASS='Hello100!'
-DIR='exploits'
+PASS='!'
+DIR='./home/MOUNTED_EXPLOITS'
 CWD=$(pwd)
 set timeout=20
 
