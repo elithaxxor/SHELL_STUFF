@@ -41,6 +41,7 @@ function StartUp(){
     sudo apt install cifs-utils -y
     apt install mlocate  -y
     apt install locate  -y
+    apt-get install network-manager -y
     sudo updatedb -y
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
 
@@ -80,6 +81,7 @@ _inet = $(ifconfig | grep inet)
 _mac = $(ifconfig | grep mac)
 _radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 _ip_addr = $(ip addr) 
+_usb = $(lsusb) 
 
 
 _devInfo01 = $(powermetrics)
