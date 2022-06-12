@@ -12,7 +12,22 @@
 # https://github.com/FortyNorthSecurity/EyeWitness
 
 
+
 website = "enter the site here"
+
+function getIPfromDNS() 
+    $(netcat $website) 
+    $(host $website) 
+}
+
+function curlSite() {
+	mkdir /home/CURLED_WEBSITE && cd /home/CURLED_WEBSITE 
+	curl -o $website
+	mkdir /home/WGET_WEBSITE && cd /home/WGET_WEBSITE 
+	wget $website 
+	mkdir /home/HTTPRACK_WEBSITE && cd /home/HTTPRACK_WEBSITE 
+	httrack -w $website
+	}
 
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
@@ -24,7 +39,6 @@ function sys_update(){
 }
 
 
-
 function Get_Clone(){
     echo "Getting Dependencies"
     git clone 'https://github.com/aboul3la/Sublist3r'
@@ -32,14 +46,6 @@ function Get_Clone(){
     git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
 }
 
-function getIPfromDNS() {
-    netcat 
-}
-
-### TO ENUMERATE SUBDOMAINS sublist3r
-wget https://github.com/aboul3la/Sublist3r/archive/master.zip
-unzip master.zip
-./sublist3r.py -d yourdomain.com
 
 # https://dnsdumpster.com/
 
@@ -71,12 +77,20 @@ Get_Clone
 Mkdirs
 
 
+function enumSubDomains() {
+git clone "https://github.com/FortyNorthSecurity/EyeWitness" 
+
+wget https://github.com/aboul3la/Sublist3r/archive/master.zip
+unzip master.zip
+./sublist3r.py -d $website
+
+
+
 echo "starting sub-domin grab"
 sublist3r -d $1 -o final.txt
 
 echo 'compiling 3rd level domain'
 cat domain_list.txt | grep -Po "(\w+\.\w+\.\w+)$" | sort -u >> third-level.txt
-
 
 echo 'Enumerating through doman for [FULL] Sublistings'
 for domain in $(cat third-level.txt);
@@ -95,6 +109,7 @@ else
     cat final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
 fi
 
+}
 
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
