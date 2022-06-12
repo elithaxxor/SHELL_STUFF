@@ -133,6 +133,8 @@ function openPortScan {
 	echo "Eyewitness"
 	eyewitness -f $pwd/probed.txt -d $1 --all-protocols
 	mv /usr/share/eyewitness/$1 eyewitness/$1
+	
+	
 }
 
 
@@ -146,6 +148,13 @@ function testSpecificPort {
 	    echo $(NC_PORT) 
 	fi
 }
+
+
+function timePacketTrip() {
+	ping localhost 
+	traceroute localhost
+}
+
 
 
 
