@@ -88,18 +88,25 @@ Mkdirs
 	wget https://github.com/aboul3la/Sublist3r/archive/master.zip
 	unzip master.zip
 	./sublist3r.py -d $website
+	./EyeWitness.py -f $website --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
 
 	echo "starting sub-domin grab"
 	sublist3r -d $1 -o final.txt
+	./EyeWitness.py -f final.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
 
 	echo 'compiling 3rd level domain'
 	cat domain_list.txt | grep -Po "(\w+\.\w+\.\w+)$" | sort -u >> third-level.txt
+	./EyeWitness.py -f domain_list.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
+	./EyeWitness.py -f third-level.txt.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
 
-	echo 'Enumerating through doman for [FULL] Sublistings'
+
+	echo 'Enumerating through domain for [FULL] Sublistings'
 	for domain in $(cat third-level.txt);
 	    do sublist3r -d $domain -o third_levels/$domain.txt;
 		cat third_levels/$domain.txt;
-		sort -u >> final.text;
+		sort -u >> final.txt;
+	 ./EyeWitness.py -f $domain.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
+
 	done
 
 	if [ $# -eq 2 ]; ## to check the amount of paramantes [assed to sys] ## it is stored in $#
@@ -107,13 +114,24 @@ Mkdirs
 	then
 	    echo "probing for [domains] 3rd level--[GREP]"
 	    cat final.txt | sort -u | grep -v $2 | httprobe -s - p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
+
 	else
 	    echo "probing for [domains] , [HTTP-PROBE]"
+	    ./EyeWitness.py -f probed.txt --web --proxy-ip 127.0.0.1 --proxy-port 8080 --proxy-type socks5 --timeout 120
 	    cat final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
 	fi
+	
 
 }
 
+function openPortScan {
+	echo "scanning for open ports"
+	nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
+
+	echo "Eyewitness"
+	eyewitness -f $pwd/probed.txt -d $1 --all-protocols
+	mv /usr/share/eyewitness/$1 eyewitness/$1
+}
 
 
 function testSpecificPort {
@@ -128,11 +146,4 @@ function testSpecificPort {
 }
 
 
-echo "scanning for open ports"
-nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
-
-echo "Eyewitness"
-eyewitness -f $pwd/probed.txt -d $1 --all-protocols
-
-mv /usr/share/eyewitness/$1 eyewitness/$1
 
