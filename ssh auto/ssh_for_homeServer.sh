@@ -35,7 +35,7 @@ function StartUp(){
     sudo apt upgrade -y
     sudo apt dist-upgrade -y
     sudo apt-get install git -y
-    sudo apt install infix -y
+    sudo apt install inxi -y
    sudo apt install proxychains -y
     apt install ipcalc -y
     sudo apt install cifs-utils -y
@@ -59,6 +59,8 @@ echo($_inet)
 echo($_mac )
 echo($_radio_name)
 echo($ip_addr)
+echo(_devInfo01)
+echo($_devInfo02) 
 }
 
 function sshFileTransfer() {
@@ -71,12 +73,18 @@ function sshFileTransfer() {
 
 
 
+
 DIRS=$(ls *.txt)
 _broadcast = $(ifconfig | grep broadcast)
 _inet = $(ifconfig | grep inet)
 _mac = $(ifconfig | grep mac)
 _radio_name = $(iw dev | awk) '$1=="Interface"{print $2}'
 _ip_addr = $(ip addr) 
+
+
+_devInfo01 = $(powermetrics)
+_devInfo02 = $(Infix -Fxz) 
+
 
 
 # spawn process 
