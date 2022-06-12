@@ -160,7 +160,7 @@ function testSpecificPort {
 
 function timePacketTrip() {
 	ping localhost 
-	traceroute localhost
+	tracert localhost
 }
 
 
