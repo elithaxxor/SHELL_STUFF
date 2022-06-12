@@ -40,6 +40,7 @@ function startSSH(){
     quote PASS $PASSWD
     cd $DIR || SERVER_CWD=$(pwd)
     echo(CWD=$(pwd))
+    
 }
 
 function StartUp(){
@@ -54,10 +55,14 @@ function StartUp(){
     apt install mlocate  -y
     apt install locate  -y
     sudo updatedb -y
+    sudo apt install nginx 
     sudo apt install netcat  -y
-    sudo apt install netstat -y
-    
+    sudo apt install netstat -
     apt-get install network-manager -y
+    systemctl start NetworkManager.service  ##starts NMCLI 
+    systemctl enable NetworkManager.service ## sets NMCLI start with system 
+    
+
     sudo updatedb -y
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
 
@@ -88,10 +93,26 @@ function sshFileTransfer() {
     sftp -b batchfile.txt ~/.ssh/key_name username@hostname.example # using batch in text
 }
 
-function grabNetworkStats*() {
+function grabNetworkStats() {
 sudo arp -a
 sudo netstat 
 sudo nc 
+}
+
+function setupRemoteLogin() {
+
+echo
+"## add the commented below to ~/.vnc/xstartup
+##!/bin/bash
+#xrdb $HOME/.Xresources
+#startxfce4 &"
+
+mkdir /home/PARSEC/
+sudo wget "https://builds.parsecgaming.com/package/parsec-linux.deb"
+vncserver -kill :1
+mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+nano ~/.vnc/xstartup
+
 }
 
 
