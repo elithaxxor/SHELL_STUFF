@@ -16,12 +16,13 @@
 website = "enter the site here"
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
-	## remove unused dependacncies 
-	sudo apt-get autoremove && sudo apt-get autoclean
-	sudo apt install dnsutils	
+	sudo apt-get autoremove && sudo apt-get autoclean -y
+	sudo apt install dnsutils -y
+	sudo apt install eyewitness -y
 	echo "Update Log: " > apt_log.txt
 	date >> apt_log.txt
 }
+
 
 
 function Get_Clone(){
@@ -81,37 +82,51 @@ Get_Clone
 Mkdirs
 
 
-function enumSubDomains() {
-git clone "https://github.com/FortyNorthSecurity/EyeWitness" 
+	function enumSubDomains() {
+	git clone "https://github.com/FortyNorthSecurity/EyeWitness" 
 
-wget https://github.com/aboul3la/Sublist3r/archive/master.zip
-unzip master.zip
-./sublist3r.py -d $website
+	wget https://github.com/aboul3la/Sublist3r/archive/master.zip
+	unzip master.zip
+	./sublist3r.py -d $website
 
-echo "starting sub-domin grab"
-sublist3r -d $1 -o final.txt
+	echo "starting sub-domin grab"
+	sublist3r -d $1 -o final.txt
 
-echo 'compiling 3rd level domain'
-cat domain_list.txt | grep -Po "(\w+\.\w+\.\w+)$" | sort -u >> third-level.txt
+	echo 'compiling 3rd level domain'
+	cat domain_list.txt | grep -Po "(\w+\.\w+\.\w+)$" | sort -u >> third-level.txt
 
-echo 'Enumerating through doman for [FULL] Sublistings'
-for domain in $(cat third-level.txt);
-    do sublist3r -d $domain -o third_levels/$domain.txt;
-        cat third_levels/$domain.txt;
-        sort -u >> final.text;
-done
+	echo 'Enumerating through doman for [FULL] Sublistings'
+	for domain in $(cat third-level.txt);
+	    do sublist3r -d $domain -o third_levels/$domain.txt;
+		cat third_levels/$domain.txt;
+		sort -u >> final.text;
+	done
 
-if [ $# -eq 2 ]; ## to check the amount of paramantes [assed to sys] ## it is stored in $#
+	if [ $# -eq 2 ]; ## to check the amount of paramantes [assed to sys] ## it is stored in $#
 
-then
-    echo "probing for [domains] 3rd level--[GREP]"
-    cat final.txt | sort -u | grep -v $2 | httprobe -s - p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
-else
-    echo "probing for [domains] , [HTTP-PROBE]"
-    cat final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
-fi
+	then
+	    echo "probing for [domains] 3rd level--[GREP]"
+	    cat final.txt | sort -u | grep -v $2 | httprobe -s - p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
+	else
+	    echo "probing for [domains] , [HTTP-PROBE]"
+	    cat final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ":443" > probed.txt
+	fi
 
 }
+
+
+
+function testSpecificPort {
+	NC_PORT=80
+	if [[ $(nc -z localhost ${NC_PORT}) -eq 0 ]]; then
+		echo "Tomcat is up"
+	    echo $(NC_PORT) 
+	else
+		echo "Tomcat is shutdown"
+	    echo $(NC_PORT) 
+	fi
+}
+
 
 echo "scanning for open ports"
 nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
