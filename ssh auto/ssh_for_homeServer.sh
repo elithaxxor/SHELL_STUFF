@@ -11,6 +11,18 @@ set timeout=20
 
 
 
+NC_PORT=80
+if [[ $(nc -z localhost ${NC_PORT}) -eq 0 ]]; then
+	echo "Tomcat is up"
+    echo $(NC_PORT) 
+else
+	echo "Tomcat is shutdown"
+    echo $(NC_PORT) 
+fi
+
+
+
+
 
 ## sets up paramaters for call 
 set ip [index $argv 0]
