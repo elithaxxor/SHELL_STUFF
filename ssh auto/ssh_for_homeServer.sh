@@ -44,6 +44,7 @@ function startSSH(){
 }
 
 function firewallUp() {
+echo
 sudo ufw logging on
 sudo ufw enable
 Sudo ufw allow ssh
@@ -67,12 +68,23 @@ sudo ufw default allow outgoing
 }
 
 
+
+function sys_update(){
+	sudo apt-get update && sudo apt-get upgrade -y 
+	## remove unused dependacncies 
+	sudo apt-get autoremove && sudo apt-get autoclean
+	## create log file 
+	echo "Update Log: " > apt_log.txt
+	date >> apt_log.txt
+}
+
+sys_update 
+
 function StartUp(){
 python -m pip install --upgrade pip
 sudo apt install chrontab -y
 sudo apt install expect -y
-pyenv install 3.8.9
-pyenv shell 3.8.9 n
+
 
     sudo apt update -y
     sudo apt upgrade -y
