@@ -19,6 +19,7 @@ function sys_update(){
 	sudo apt-get autoremove && sudo apt-get autoclean -y
 	sudo apt install dnsutils -y
 	sudo apt install eyewitness -y
+	sudo apt install proxychains 
 	
 		    sudo apt install netcat  -y
 	    sudo apt install netstat -
