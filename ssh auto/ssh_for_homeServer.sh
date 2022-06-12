@@ -22,6 +22,9 @@ fi
 
 
 
+function scanNetwork {
+netstat 
+nc 
 
 
 ## sets up paramaters for call 
@@ -30,8 +33,8 @@ set user [index $argv 1]
 set password [index $argv 2]
 
 
+## add express vpn 
 function hideMyTracks() {
-
 proxychains firefox
 }
 
@@ -54,7 +57,6 @@ sudo ufw allow http #80
  sudo ufw allow 1920:1935/tcp
   sudo ufw allow 1920:1935/udp
 
- 
 }
 
 function firewallAllAccess() {
