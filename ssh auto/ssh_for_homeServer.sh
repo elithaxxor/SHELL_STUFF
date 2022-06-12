@@ -88,6 +88,9 @@ function StartUp(){
 python -m pip install --upgrade pip
 sudo apt install chrontab -y
 sudo apt install expect -y
+sudo apt install curl -y
+sudo apt install wget 
+
 
 	sudo apt install tor -y 
     sudo apt update -y
@@ -151,12 +154,13 @@ echo
 ##!/bin/bash
 #xrdb $HOME/.Xresources
 #startxfce4 &"
-
-mkdir /home/PARSEC/
-sudo wget "https://builds.parsecgaming.com/package/parsec-linux.deb"
 vncserver -kill :1
 mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
 nano ~/.vnc/xstartup
+
+
+mkdir /home/PARSEC/ && cd /home/PARSEC/
+sudo curl "https://builds.parsecgaming.com/package/parsec-linux.deb"
 
 }
 
