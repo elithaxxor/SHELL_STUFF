@@ -25,6 +25,7 @@ fi
 function scanNetwork {
 netstat 
 nc 
+}
 
 
 ## sets up paramaters for call 
