@@ -72,6 +72,12 @@ function sshFileTransfer() {
     sftp -b batchfile.txt ~/.ssh/key_name username@hostname.example # using batch in text
 }
 
+function grabNetworkStats*() {
+sudo arp -a
+sudo netstat 
+}
+
+
 
 
 
