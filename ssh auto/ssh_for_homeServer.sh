@@ -11,16 +11,6 @@ set timeout=20
 
 
 
-NC_PORT=80
-if [[ $(nc -z localhost ${NC_PORT}) -eq 0 ]]; then
-	echo "Tomcat is up"
-    echo $(NC_PORT) 
-else
-	echo "Tomcat is shutdown"
-    echo $(NC_PORT) 
-fi
-
-
 
 function scanNetwork {
 netstat 
@@ -113,7 +103,10 @@ sudo apt install wget
     systemctl enable NetworkManager.service ## sets NMCLI start with system 
     sudo updatedb -y
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
-
+	sudo apt install dnsutils -y
+	sudo apt install eyewitness -y
+	
+		
     sudo apt-get install -y squashfs-tool -y
     Infix -Fxz
 
