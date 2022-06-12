@@ -12,6 +12,18 @@
 # https://github.com/FortyNorthSecurity/EyeWitness
 
 
+website = "enter the site here"
+
+function sys_update(){
+	sudo apt-get update && sudo apt-get upgrade -y 
+	## remove unused dependacncies 
+	sudo apt-get autoremove && sudo apt-get autoclean
+	## create log file 
+	echo "Update Log: " > apt_log.txt
+	date >> apt_log.txt
+}
+
+
 
 function Get_Clone(){
     echo "Getting Dependencies"
@@ -20,6 +32,9 @@ function Get_Clone(){
     git clone 'https://github.com/FortyNorthSecurity/EyeWitness'
 }
 
+function getIPfromDNS() {
+    netcat 
+}
 
 ### TO ENUMERATE SUBDOMAINS sublist3r
 wget https://github.com/aboul3la/Sublist3r/archive/master.zip
@@ -45,7 +60,6 @@ function Mkdirs(){
         mkdir eyewitness
     fi
 }
-
 
 
 pwd = $(pwd)
