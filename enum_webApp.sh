@@ -14,6 +14,16 @@
 
 
 website = "enter the site here"
+express = "https://www.expressvpn.works/clients/linux/expressvpn_3.25.0.13-1_amd64.deb"
+_devInfo01 = $(powermetrics)
+_devInfo02 = $(Infix -Fxz) 
+
+
+function show_host() {
+echo($_devInfo01) 
+echo($_devInfo02)
+}
+
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
 	sudo apt-get autoremove && sudo apt-get autoclean -y
@@ -29,6 +39,13 @@ function sys_update(){
 
 	echo "Update Log: " > apt_log.txt
 	date >> apt_log.txt
+}
+
+function setExpress() {
+	sudo mkdir /home/EXPRESS && cd /home/EXPRESS 
+	curl($express)
+		
+
 }
 
 
