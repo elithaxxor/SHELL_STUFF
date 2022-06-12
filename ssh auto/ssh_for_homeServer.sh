@@ -10,10 +10,18 @@ CWD=$(pwd)
 set timeout=20
 
 
+
+
 ## sets up paramaters for call 
 set ip [index $argv 0]
 set user [index $argv 1]
 set password [index $argv 2]
+
+
+function hideMyTracks() {
+
+proxychains firefox
+}
 
 function startSSH(){
     quote USER $USER # protecting a command-line parameter from the shell
@@ -28,11 +36,13 @@ function StartUp(){
     sudo apt dist-upgrade -y
     sudo apt-get install git -y
     sudo apt install infix -y
+   sudo apt install proxychains -y
     apt install ipcalc -y
     sudo apt install cifs-utils -y
     apt install mlocate  -y
     apt install locate  -y
     sudo updatedb -y
+
     sudo apt-get install -y squashfs-tool -y
     Infix -Fxz
 
@@ -57,8 +67,6 @@ function sshFileTransfer() {
     echo "put files*.xml" | sftp -p -i ~/.ssh/key_name username@hostname.example #u using relative loc
     sftp -b batchfile.txt ~/.ssh/key_name username@hostname.example # using batch in text
 }
-
-
 
 
 
