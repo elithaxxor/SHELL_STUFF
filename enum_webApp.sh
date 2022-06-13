@@ -180,6 +180,22 @@ Mkdirs
 
 }
 
+function droopScann() {
+	git clone https://github.com/droope/droopescan.git
+	apt install python-pip
+	pip install droopscan
+	pip install -r requirements.txt
+	./droopescan scan --help
+
+	## doopscan to scan vulnrable webservers 
+	droopscan scan drupal -u URL_HERE
+	droopscan scan silverstripe -u URL_HERE
+	./droopescan scan --help
+	droopescan scan drupal -u example.org
+	droopescan scan drupal -U list_of_urls.txt
+	droopescan scan -U list_of_urls.txt
+}
+
 function openPortScan {
 	echo "scanning for open ports"
 	nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
