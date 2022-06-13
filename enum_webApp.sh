@@ -12,11 +12,7 @@
 # https://github.com/FortyNorthSecurity/EyeWitness
 
 
-## NMAP VULNERS ON MAC ## 
-function getNmapVulns() {
-cd /usr/local/Cellar/nmap/7.92/share/nmap/scripts && ls-al 
 
-}
 
 ## ARP SCAN 
 echo ('enter pass:')
@@ -247,5 +243,17 @@ function timePacketTrip() {
 }
 
 
+### threatviews ### 
 
+
+## NMAP VULNERS ON MAC ## 
+function getNmapVulns() {
+	git clone "https://github.com/vulnersCom/nmap-vulners" 
+	nmap --script-updatedb
+	cd /usr/local/Cellar/nmap/7.92/share/nmap/scripts && ls-al > macNmapVulners ## mac 
+	mkdir  ~/home/EXPLOITS/ && cp macNmapVulners ~/home/EXPLOITS/ 
+	~/.nmap/scripts=/ # or $NMAPDIR ## LNUX 
+}
+
+getNmapVulns
 
