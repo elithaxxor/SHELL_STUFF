@@ -4,18 +4,17 @@
 echo 'Enter The Subnet'
 read SUBNET 
 
-echo 'Enter Netcat Port' 
-read NC_PORT 
-# NC_PORT=80
-
-
 
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
 	## remove unused dependacncies 
 	sudo apt-get autoremove && sudo apt-get autoclean
 	apt-get install dnsmasq ## to create multiple small DNSs (or APs) 
+	https://github.com/ChrisMcMStone/wifi-learner
+
 	## create log file 
+	apt install infix 
+
 	echo "Update Log: " > apt_log.txt
 	date >> apt_log.txt
 }
@@ -23,7 +22,12 @@ function sys_update(){
 
 
 function getInfo() {
+
+	infix -FXZ
+	iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+	tracert localhost 
 	
+
 }
 
 function pingSweep(){
@@ -52,17 +56,68 @@ fi
 }
 
 function timePacketTrip() {
-	ping localhost 
+	ping localhost -a 
 	traceroute localhost
 }
 
+
+
+
+#https://cybergibbons.com/security-2/quick-and-easy-fake-wifi-access-point-in-kali/
 function createFakeAPs() {
-	ifconfig newAP 192.168.50.1/24 up
+	echo(ipaddr) 
+	
+	touch hostapd.conf >> 
+	 interface=wlan3
+	driver=nl80211
+	ssid=Kali-MITM
+	channel=1
+	
+	ifconfig newAPdev 192.168.50.1/24 up
 	cd /etc/hostapd
 	nano hostapd.conf
 	./hostapd.conf
 	
 }
+
+
+
+## make fake dns 
+
+# https://cybergibbons.com/security-2/quick-and-easy-fake-wifi-access-point-in-kali/
+
+function makeFakeAPConfigs() {
+
+	sudo apt-get install dnsmasq ## to create multiple dns points
+	apt-get install hostapd  ## to get adapter to work as AP 
+	mkdir fakeAPConfigs () {
+	touch hostapd.conf cat >> 
+	 interface=wlan3
+	driver=nl80211
+	ssid=Kali-MITM
+	channel=1
+
+
+	touch “dnsmasq.conf”
+	Echo” ADD THIS TO CONFIG FILE
+	interface=wlan3
+	dhcp-range=10.0.0.10,10.0.0.250,12h
+	dhcp-option=3,10.0.0.1
+	dhcp-option=6,10.0.0.1
+	server=8.8.8.8
+	log-queries
+	log-dhcp
+	“
+	hostapd ./hostapd.conf 
+
+}
+
+function setFakeAProuting () {
+	sudo sysctl -w net.ipv4.ip_forward=1
+	sudo iptables -P FORWARD ACCEPT
+	sudo iptables --table nat -A POSTROUTING -o wlan0 -j MASQUERADE
+}
+
 
 
 
