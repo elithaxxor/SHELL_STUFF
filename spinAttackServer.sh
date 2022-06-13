@@ -16,6 +16,58 @@ iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
 
 
 
+# https://fedingo.com/how-to-install-openssl-in-ubuntu/
+function buildOpenSSL() {
+
+	sudo apt install build-essential checkinstall zlib1g-dev -y
+	cd /usr/local/src/
+	sudo wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz
+
+	sudo tar -xf openssl-1.1.1c.tar.gz
+	cd openssl-1.1.1c
+
+	 sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
+	sudo make
+	sudo make test
+	sudo make install
+
+
+	# 6. Configure OpenSSL Shared Libraries
+	sudo vi /etc/ld.so.conf.d/openssl-1.1.1c.conf
+	## add this line to the config file-->  /usr/local/ssl/lib
+	sudo ldconfig -v
+
+# ADD THIS LINE /usr/local/ssl/lib
+ 
+ 
+	#7. Configure OpenSSL Binary
+	sudo mv /usr/bin/c_rehash /usr/bin/c_rehash.backup
+	sudo mv /usr/bin/openssl /usr/bin/openssl.backup
+
+	Open environment PATH variable.
+
+	sudo vi /etc/environment
+	PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/ssl/bin"
+	# save and crteate path 
+	source /etc/environment
+	openssl version -a >> openSSLversion.txt 
+}
+
+
+# https://fedingo.com/how-to-install-openssl-in-ubuntu/
+function makesslKeys() {
+	### OPEN SSL ENCRYPTION ###
+	Private key 
+	openssl genrsa -aes-256-cbc -out macair.key 4096
+	# Public key 
+	openssl rsa -in frank.key -pubout > frankpublic.key 
+	# verification file 
+
+	### making signed encryption 
+	openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
+	# to sign 
+	openssl base64 -in signer -out verifcation.enc 
+}
 
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
