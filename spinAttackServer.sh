@@ -10,7 +10,12 @@ function hideMyTracks() {
 proxychains firefox
 proxychains tor 
 proxychains curl ($express) 
+iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+
 }
+
+
+
 
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
@@ -22,9 +27,28 @@ function sys_update(){
 }
 
 
+
 function spinAnAttackServer() {
-  proxychains ssh -t elithaxxor@lish-fremont.linode.com ubuntu-us-west
+mkdir ~/home/EXPLOITS/
+
+	  proxychains ssh -t elithaxxor@lish-fremont.linode.com ubuntu-us-west
+	  Git clone https://github.com/elithaxxor/shell_hashStuff
+	git clone https://github.com/elithaxxor/SHELL_STUFF/tree/main_pi
+	git clone 
   }
+  
+  function getSysInfo() {
+	apt install infix 
+	sudo apt-get install ufw
+	sudo ufw status
+	iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+	sudo service ssh status
+	infix -FXZ
+}
+
+
+
+
   
   
 
