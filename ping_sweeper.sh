@@ -14,6 +14,7 @@ function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
 	## remove unused dependacncies 
 	sudo apt-get autoremove && sudo apt-get autoclean
+	apt-get install dnsmasq ## to create multiple small DNSs (or APs) 
 	## create log file 
 	echo "Update Log: " > apt_log.txt
 	date >> apt_log.txt
@@ -54,6 +55,15 @@ function timePacketTrip() {
 	ping localhost 
 	traceroute localhost
 }
+
+function createFakeAPs() {
+	ifconfig newAP 192.168.50.1/24 up
+	cd /etc/hostapd
+	nano hostapd.conf
+	./hostapd.conf
+	
+}
+
 
 
 simpleNetworkScan
