@@ -53,6 +53,16 @@ function show_host() {
 
 }
 
+function ripClientsInfo() {
+ sudo su 
+ pwd -p > clientBasicInfo.txt 
+ du -h > clientBasicInfo.txt 
+ df -h > clientBasicInfo.txt 
+ 
+ 
+}
+
+
 function sys_update(){
 	sudo apt-get update && sudo apt-get upgrade -y 
 	sudo apt-get autoremove && sudo apt-get autoclean -y
@@ -74,7 +84,6 @@ function setExpress() {
 	sudo mkdir /home/EXPRESS && cd /home/EXPRESS 
 	curl($express)
 		
-
 }
 
 
