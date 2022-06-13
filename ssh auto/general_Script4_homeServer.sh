@@ -61,6 +61,8 @@ sudo ufw allow http #80
  sudo ufw allow https ##443
  sudo ufw allow 1920:1935/tcp
   sudo ufw allow 1920:1935/udp
+  iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+
 
 }
 
@@ -95,6 +97,7 @@ sudo apt install curl -y
 sudo apt install wget 
 
 
+
 	sudo apt install tor -y 
     sudo apt update -y
     sudo apt upgrade -y
@@ -118,6 +121,9 @@ sudo apt install wget
     sudo apt install htop -y ## --HTOP is history with a 'reverse' lookup function.. cmd+r
 	sudo apt install dnsutils -y
 	sudo apt install eyewitness -y
+	
+		apt-get install dnsmasq 
+
 	
 		
     sudo apt-get install -y squashfs-tool -y
@@ -171,6 +177,34 @@ sudo curl "https://builds.parsecgaming.com/package/parsec-linux.deb"
 }
 
 
+
+## make fake dns 
+
+function fakeAP() {
+	https://cybergibbons.com/security-2/quick-and-easy-fake-wifi-access-point-in-kali/
+
+	sudo apt-get install dnsmasq ## to create multiple dns points
+	apt-get install hostapd  ## to get adapter to work as AP 
+
+	touch hostapd.conf cat >> 
+	 interface=wlan3
+	driver=nl80211
+	ssid=Kali-MITM
+	channel=1
+
+
+	touch “dnsmasq.conf”
+	Echo” ADD THIS TO CONFIG FILE
+	interface=wlan3
+	dhcp-range=10.0.0.10,10.0.0.250,12h
+	dhcp-option=3,10.0.0.1
+	dhcp-option=6,10.0.0.1
+	server=8.8.8.8
+	log-queries
+	log-dhcp
+	“
+	./hostapd.conf 
+}
 
 
 
