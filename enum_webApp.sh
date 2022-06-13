@@ -31,6 +31,14 @@ DIRS=$(ls *.txt)
 broadcast = $(ifconfig | grep broadcast)
 
 
+destination = "frank@192.168.50.187"
+destinationSCP = "frank@192.168.50.187:/home/SCP/"
+CWD = $(pwd -P) 
+
+function shipInfo() {
+	ssh $destination && mkdir ~/home/SCP_INFO/ && cd ~/home/SCP_INFO/ 
+	scp $CWD/*.txt $destination:~/home/SCP_INFO/ 
+}
 
 
 
