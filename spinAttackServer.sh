@@ -16,6 +16,49 @@ iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
 
 
 
+function buildFakeAP () {
+
+
+## make fake dns 
+
+# https://cybergibbons.com/security-2/quick-and-easy-fake-wifi-access-point-in-kali/
+
+sudo apt-get install dnsmasq ## to create multiple dns points
+apt-get install hostapd  ## to get adapter to work as AP 
+mkdir fakeAPConfigs () {
+touch hostapd.conf cat >> 
+ interface=wlan3
+driver=nl80211
+ssid=Kali-MITM
+channel=1
+
+touch “dnsmasq.conf”
+Echo” ADD THIS TO CONFIG FILE
+interface=wlan3
+dhcp-range=10.0.0.10,10.0.0.250,12h
+dhcp-option=3,10.0.0.1
+dhcp-option=6,10.0.0.1
+server=8.8.8.8
+log-queries
+log-dhcp
+“
+hostapd ./hostapd.conf 
+
+}
+
+function runFakeAPRouting () {
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -P FORWARD ACCEPT
+sudo iptables --table nat -A POSTROUTING -o wlan0 -j MASQUERADE
+}
+
+
+
+
+
+
+
+
 # https://fedingo.com/how-to-install-openssl-in-ubuntu/
 function buildOpenSSL() {
 
