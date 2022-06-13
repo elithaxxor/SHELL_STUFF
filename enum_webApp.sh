@@ -12,6 +12,18 @@
 # https://github.com/FortyNorthSecurity/EyeWitness
 
 
+## NMAP VULNERS ON MAC ## 
+function getNmapVulns() {
+cd /usr/local/Cellar/nmap/7.92/share/nmap/scripts && ls-al 
+
+}
+
+## ARP SCAN 
+echo ('enter pass:')
+read pass
+$(arp-scan -l | grep Raspberry | awk '{print $1}') root $pass
+
+
 
 website = "enter the site here"
 express = "https://www.expressvpn.works/clients/linux/expressvpn_3.25.0.13-1_amd64.deb"
