@@ -284,9 +284,6 @@ function sshFileTransfer() {
 
 
 function makeVNC() {
-        echo
-    "## add the commented below to ~/.vnc/xstartup
-    ##!/bin/bash
     #xrdb $HOME/.Xresources
     #startxfce4 &"
     vncserver -kill :1
