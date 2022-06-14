@@ -3,6 +3,7 @@
 ##
 #
 
+## DEFAULTS ##
 HOST='192.168.50.1'
 USER='frank'
 PASS='!'
@@ -14,7 +15,7 @@ SECONDS=0
 set timeout=20
 
 
-## sets up paramaters for call
+## ARGV 
     set ip [index $argv 0]
     set user [index $argv 1]
     set pass [index $argv 2]
@@ -26,9 +27,7 @@ read -p "ip/hostname" ip
 
 
 function echoBasic() { echo "****************\n" $(which bash) $$ echo$(ip) $$ echo$(user) $$ echo$(pass) $$ echo$(cwd) $$ echo$(dir) "\n" }
-
 function handleDate() {
-
 echo "[!] Current Working On: \n" && echoBasic 
 printf "[!]
 
