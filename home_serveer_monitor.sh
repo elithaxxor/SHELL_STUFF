@@ -28,45 +28,35 @@ function handleDate() {
     date +'%m/%d/%Y'      ### mm/dd/yyyy ###
     date +'%r'## Time in 12 hr format ###
     backup_dir=$(date +'%m/%d/%Y')
-    echo "[${date}]\n Backup dir for today: /nas04/backups/${backup_dir}
+    echo "[${date}]\n Backup dir for today: /nas04/backups/${backup_dir}"
     checkLogging
 }
 
 
 function checkLogging() {
     date +'FORMAT'&& date +'%m/%d/%Y' && date +'%r'#
-
- 	 echo"[!] Checking logging / processes [SYSTEM-CTL AND TOP] \n \n%d$USER@HOST"
+    
+    echo $(lsof -i[46][protocol][@hostname|hostaddr][:service|port])
+  	lsof -Pni
+    cp $./systemCTLStatus.txt	
+    echo $(top)
+    
+ 	echo"[!] Checking logging / processes [SYSTEM-CTL AND TOP] \n \n%d$USER@HOST"
     echo $(Systemctl status Rslog.service) > systemCTLisActive.txt && cp $SAVE_DIR = "~//SAVED_FILES"
     echo $(systemctl is-active application.service) > systemCTLStatus.txt && cp $SAVE_DIR = ~/save_dir
     echo $(System.ctl.status)  systemCTLStatus.txt
     
     printf "[!] Resolving Connections on ports \n%d$HOST[!]"
-    lsof -i @IP_ADDRESS ## resolves specific IP 
-	lsof -i @HOSTNAME ## Resolves HOSTNAME 
-	
+    lsof -i @IP_ADDRESS && lsof -i @HOSTNAME 
 	
 	printf "[!] Resolving Connections on ports [80, 443, 22, 21] [!]"
 	echo $(lsof -i :80) && echo $(lsof -i :443) && echo $(lsof -i :22) && echo $(lsof -i :21)
 	printf "[+] RESOLVED! [+]"
 
-
-
-
-
-    
-    echo $(lsof -i[46][protocol][@hostname|hostaddr][:service|port])
-  	lsof -Pni
-
-	
-
-
-    cp $./systemCTLStatus.txt	
-    echo $(top)
+   
     }
 
 function sys_update(){
-
     function handle_UpdateFiles() {
             date +%F
             echo "[!] handling Freshly Created System Files  "
