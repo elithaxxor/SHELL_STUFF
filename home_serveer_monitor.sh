@@ -21,14 +21,23 @@ set timeout=20
     set cwd   [index $argv 5]
     set dir [index $argv 4]
     set save_dir [index $argv 5]
+read -p "ip/hostname" ip 
 
+
+
+function echoBasic() { echo "****************\n" $(which bash) $$ echo$(ip) $$ echo$(user) $$ echo$(pass) $$ echo$(cwd) $$ echo$(dir) "\n" }
 
 function handleDate() {
-    date +'FORMAT' ## Time in 12 hr format ###
-    date +'%m/%d/%Y'      ### mm/dd/yyyy ###
-    date +'%r'## Time in 12 hr format ###
-    backup_dir=$(date +'%m/%d/%Y')
-    echo "[${date}]\n Backup dir for today: /nas04/backups/${backup_dir}"
+
+echo "[!] Current Working On: \n" && echoBasic 
+printf "[!]
+
+    echo "[!] Handling Data [!]"
+	    date +'FORMAT' ## Time in 12 hr format ###
+	    date +'%m/%d/%Y'      ### mm/dd/yyyy ###
+	    date +'%r'## Time in 12 hr format ###
+	    backup_dir=$(date +'%m/%d/%Y')
+	    echo "[${date}]\n Backup dir for today: /nas04/backups/${backup_dir}"
     checkLogging
 }
 
@@ -52,8 +61,6 @@ function checkLogging() {
 	printf "[!] Resolving Connections on ports [80, 443, 22, 21] [!]"
 	echo $(lsof -i :80) && echo $(lsof -i :443) && echo $(lsof -i :22) && echo $(lsof -i :21)
 	printf "[+] RESOLVED! [+]"
-
-   
     }
 
 function sys_update(){
