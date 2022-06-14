@@ -31,14 +31,18 @@ function handleDate() {
 echo "[!] Current Working On: \n" && echoBasic 
 printf "[!]
 
-    echo "[!] Handling Data [!]"
+    echo '[!] Handling Data [!]'
 	    date +'FORMAT' ## Time in 12 hr format ###
 	    date +'%m/%d/%Y'      ### mm/dd/yyyy ###
 	    date +'%r'## Time in 12 hr format ###
 	    backup_dir=$(date +'%m/%d/%Y')
 	    echo "[${date}]\n Backup dir for today: /nas04/backups/${backup_dir}"
     checkLogging
+    
 }
+
+function hashGRUB() { echo  "[!] Current Grub MD5 $(ps -aux | grep imap) \n\n " && echo "[!] MD5 Value $(password --md5 <password-hash>) \n\n" $$ echo "[!] MD5 Value $(/sbin/grub-md5-crypt) \n\n" }
+
 
 
 function checkLogging() {
