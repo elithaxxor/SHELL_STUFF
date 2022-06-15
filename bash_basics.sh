@@ -6,7 +6,8 @@
 #  Created by a-robot on 3/14/22.
 #  
 
-
+email osnit 
+hunter.io 
 
 ## basics
 iwevent -- to get wireless events
