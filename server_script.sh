@@ -45,6 +45,10 @@ set HOME_DIR [index $argv 9]
 function makeDir () {
 	cd '/home/' && mkdir exploitsDir && chmod +r +x ./exploitsDir && mkdir savedData && chmod +r +x ./exploitsDir
 }
+
+function portListen() {
+	sudo lsof -i -P -n | grep LISTEN
+}
 function _broadcastInfo() {
 	_broadcast = $(ifconfig | grep broadcast) > date + broadcast.txt && echo _broadcast
 	_inet = $(ifconfig | grep inet)
