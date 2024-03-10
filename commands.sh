@@ -97,6 +97,24 @@ truncate -s 0 /var/log/auth.log
  sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
 airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
 
+########## OPEN PORTS FOR SERVERS ##########
+
+UBUNTU - NGINX - FIREWALL
+sudo ufw status
+sudo ufw allow 80/udp
+sudo ufw allow 80/tcp
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+
+sudo ufw allow 9999/udp
+sudo ufw allow 9999/tcp
+sudo iptables -A INPUT -p tcp --dport 9999 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 9999 -j ACCEPT
+sudo ufw allow 20/tcp
+sudo ufw allow 21/tcp
+sudo ufw allow 990/tcp
+sudo ufw allow 40000:50000/tcp
+sudo ufw status
 
 
 ## To add new user 
