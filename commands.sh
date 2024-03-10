@@ -5,6 +5,11 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
+(start armitage)
+sudo msfconsole 
+sudo msfrpcd -P Hello200@
+sudo armitage 
+
 (BROADCAST MODE)
 sudo ifconfig wlan0 down
 sudo airmon-ng check
