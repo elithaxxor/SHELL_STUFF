@@ -7,7 +7,9 @@
 #  
 (start armitage)
 sudo msfconsole 
-sudo msfrpcd -P Hello200@
+sudo msfrpcd -P pass
+sudo msfrpcd -U msfuser -P pass --ssl
+
 sudo armitage 
 
 (BROADCAST MODE)
