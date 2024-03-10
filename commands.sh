@@ -11,6 +11,9 @@ sudo airmon-ng check
 sudo airmon-ng check kill
 sudo airmon-ng start wlan0
 
+(TO FIND GATEWAY ADDRESS) 
+netstat -rn
+
 (DISCOVER WHOS ON NETWORK)
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
 
