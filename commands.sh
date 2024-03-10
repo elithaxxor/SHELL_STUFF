@@ -16,6 +16,10 @@ sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
 
 (FIND OPEN PORT ON SPECIFIC DEVICE) 
 sudo nmap -F 192.168.86.20
+
+(FIND OPEN PORT AND OS)
+sudo nmap -sV -p- -A 192.168.1.15 
+
 (FIND IP ADDR OF WEBSITE)
 nslookup dedicatedglass.com
 
