@@ -14,6 +14,8 @@ sudo airmon-ng start wlan0
 (DISCOVER WHOS ON NETWORK)
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
 
+(FIND OPEN PORT ON SPECIFIC DEVICE) 
+sudo nmap -F 192.168.86.20
 (FIND IP ADDR OF WEBSITE)
 nslookup dedicatedglass.com
 
