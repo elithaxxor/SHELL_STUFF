@@ -20,6 +20,11 @@ sudo airmon-ng start wlan0
 
 (TO FIND GATEWAY ADDRESS) 
 netstat -rn
+(FIND GATEWAY ADDR)
+route
+
+(PoRT SCAN WEBSITE)
+sudo nmap -PE -sn website.com
 
 (DISCOVER WHOS ON NETWORK)
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
