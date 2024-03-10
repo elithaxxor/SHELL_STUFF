@@ -8,8 +8,8 @@
 (start armitage)
 sudo msfconsole 
 sudo msfrpcd -P pass
-sudo msfrpcd -U msfuser -P pass --ssl
-
+sudo msfrpcd -U msf -P pass --ssl
+sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
 sudo armitage 
 
 (BROADCAST MODE)
