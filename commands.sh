@@ -5,6 +5,49 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
+(BROADCAST MODE)
+sudo ifconfig wlan0 down
+sudo airmon-ng check
+sudo airmon-ng check kill
+sudo airmon-ng start wlan0
+
+(DISCOVER WHOS ON NETWORK)
+sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
+
+(FIND IP ADDR OF WEBSITE)
+nslookup dedicatedglass.com
+
+(BETTERCAP - INTERNAL PROBE)
+sudo bettercap
+net.probe on
+
+(FIND WHOS ON NETWORK)
+nmap -A -sL 192.168.86.0/24
+
+(FIND THE ROUTER IP)
+└─$ netstat -r -n
+Kernel IP routing table
+
+(SCAN COMMON PORTS OF IOT DEVICES)
+nmap -A -p 80,8080,8081,81 192.168.64.1
+
+(SCAN OPEN PORTS ON NETWORK, WITH OS)
+└─$ sudo nmap -A -sS -O 192.168.64.1
+
+(SCAN DEVICE NAMES )
+nmap -A -sP 192.168.1.0/24
+
+(SCAN DEVICE SPECIFIC PORTS)
+Sudo nmap -A -sS -O 192.168.86.35
+
+(AUTOPWN - SCAN ROUTER FOR VULN)
+rsf (AutoPwn) > use scanners/autopwn
+rsf (AutoPwn) > show options
+rsf (AutoPwn) > set target 192.168.64.1
+rsf (AutoPwn) > run
+
+
+
 
 
 #### FOR BROWSER PLUGINS (OSNIT, SELF SECURITY)
