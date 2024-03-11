@@ -32,6 +32,10 @@ sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
 (PORT SCAN WITH IplisT)
 sudo nmap -iL iplist.txt
 
+(TCP poRT SCAN)
+sudo nmap -sA -iL iplist.txt
+
+
 (PoRT SCAN WEBSITE -layer 2)
 sudo nmap -PE -sn website.com
 
