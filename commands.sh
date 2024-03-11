@@ -20,8 +20,14 @@ sudo airmon-ng start wlan0
 
 (TO FIND GATEWAY ADDRESS) 
 netstat -rn
+
 (FIND GATEWAY ADDR)
 route
+
+
+(DISCOVER WHOS ON NETWORK)
+sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
+
 
 (PORT SCAN WITH IplisT)
 sudo nmap -iL iplist.txt
@@ -31,9 +37,6 @@ sudo nmap -PE -sn website.com
 
 (PoRT SCAN WEBSITE -layer 3, fireall)
 nmap -PA80 -sn website.com
-
-(DISCOVER WHOS ON NETWORK)
-sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
 
 (FIND OPEN PORT ON SPECIFIC DEVICE) 
 sudo nmap -F 192.168.86.20
