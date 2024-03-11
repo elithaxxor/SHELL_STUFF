@@ -35,6 +35,8 @@ sudo nmap -iL iplist.txt
 (TCP poRT SCAN)
 sudo nmap -sA -iL iplist.txt
 
+(TCP poRT SCAN)
+sudo nmap -sU -iL iplist.txt
 
 (PoRT SCAN WEBSITE -layer 2)
 sudo nmap -PE -sn website.com
