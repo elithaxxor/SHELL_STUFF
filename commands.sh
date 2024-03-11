@@ -23,6 +23,9 @@ netstat -rn
 (FIND GATEWAY ADDR)
 route
 
+(PORT SCAN WITH IplisT)
+sudo nmap -iL iplist.txt
+
 (PoRT SCAN WEBSITE -layer 2)
 sudo nmap -PE -sn website.com
 
