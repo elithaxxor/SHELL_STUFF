@@ -1,0 +1,9 @@
+#!/bin/sh
+
+function Main() {
+	python -m http.server 9999
+	ngrok http 9999
+	
+}
+
+Main 
