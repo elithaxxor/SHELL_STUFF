@@ -114,6 +114,23 @@ sudo rm auth.log
 shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's 
 truncate -s 0 /var/log/auth.log 
 
+------------------------------------------------------ SHRED SESSION & TERMINAL  LOGS --------------------------------------------
+
+function _removeSSHLogs() {
+	sudo find _sshMSG -type f -exec shred -n 10 {} \ && sudo find /var/log/syslog -type f -exec shred -n 10 {} \;
+	sudo find ~/.ssh/github_rsa.pub -type f -exec shred -n 10 {}
+}
+function _removeAllLogs() {
+	echo "[!] Removing Logs.. \n\t Old Logs\n $(lastlog)"
+	sudo find *.log -type f -exec shred -n 10 {} \ && sudo find /var/log -type f -exec shred -n 10 {} # for logs
+	cat /dev/null > ~/.bash_history && history -c && exit ## to remove history
+	sudo grep -r *.log _sysLogs | sudo rm sysLogs ## just in case #1 doesnt wrok
+	rm /root/.bash_history
+	dmesg | less && _checkLogs
+	sudo covermyass now 
+}
+
+function _checkLogs() { cat ./bash_history }
 
 ------------------------------------------------------ STAY ANONYMOUS ------------------------------------------------------
 
