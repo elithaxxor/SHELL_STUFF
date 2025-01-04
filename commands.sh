@@ -662,27 +662,6 @@ iwlist # scan savailable aps or essid
 iwspy # monitors iw nodes and records strenght and quality of signal 
 
 
-##### NMCLI #####
-nmcli general status 
-nmcli general hostname # get and change sys hostname 
-nmcli general permissions # show the permssions available to caller 
-nmcli connection show --active 
-nmcli modify 
-
-nmcli networking on off # disable network control management 
-nmcli networking connectivity 
-
-nmcli radio all   ## show status for all devices 
-nmcli radio wwan  ## for tethered devices 
-nmcli radio wifi  ## show status for wifi devices 
-
-nmcli device status
-nmcli device showstatus
-nmcli device showstatus wlan0 
-nmcli device wifi connect # connect to near hotspot
-nmcli device wifi hotspot # create a wifi hotspot 
-
-wifi-show-password
 
 ######### TO DISPLAY AND SHOW USB DEVICES #### 
 lspci 
