@@ -96,7 +96,10 @@ openssl base64 -in signer -out verifcation.enc
 ## make abunch of differnt APS 
 
 ------------------------------------------------------ BASIC RECON ------------------------------------------------------
- 
+
+iwevent -- to get wireless events
+iwgetid - reports curretn essid / ap
+
 hciconfig dev_name up 
 sdptool browse MAC_ADDRESS 
 btscanner # launches GUI interface 
