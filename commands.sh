@@ -5,6 +5,13 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
+dsniff - practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE. 
+netstat - helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP 
+netcat -all --> scans for other protocols (udp and tcp) 
+
+netlookup <host_name> --> reveals ip
+route --> gives access to routing tables 
+
 (start armitage)
 sudo msfconsole 
 sudo msfrpcd -P pass
@@ -12,9 +19,6 @@ sudo msfrpcd -U msf -P pass --ssl
 sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
 sudo armitage 
 
-dsniff - practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE. 
-netstat - helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP 
-netcat -all --> scans for other protocols (udp and tcp) 
 
 
 (BROADCAST MODE)
