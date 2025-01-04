@@ -1,81 +1,18 @@
 #!/bin/sh
 
-#  commands.sh
-#  
-#
-#  Created by a-robot on 3/14/22.
-#  
--------------------- BASIC RECON -----------------------------------
- https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
-hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
-man hciconfig 
-man hcitool 
-man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
-man btscanner 
-
-hciconfig dev_name up 
-sdptool browse MAC_ADDRESS 
-btscanner # launches GUI interface 
-
-#### BETTERCAP (ettercap replacement) ####
-## https://www.bettercap.org/legacy/ 
-# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
-
-git clone https://github.com/evilsocket/bettercap
-cd bettercap
-bundle install
-gem build bettercap.gemspec
-sudo gem install bettercap*.gem
-
-
-sudo apt-get install build-essential ruby-dev libpcap-dev
-apt install golang
-go get github.com/bettercap/bettercap
-cd $GOPATH/src/github.com/bettercap/bettercap
-make build
-sudo make install
-sudo bettercap
-
-##
-bettercap 
-ble.recon on  ## returns the range and device name of enabled BT devices 
-ble.recon off 
-ble.show 
-ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
-##ss
-192.168.0.0/24 > 192.168.0.37  » net.show
-192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
-192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
-192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
-192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
 
 
 
-netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
-netcat -all --> [scans for other protocols (udp and tcp)] 
+-----------------------------------------------------BROADCAST-MODE---------------------------------------------
 
-netlookup <host_name> --> reveals ip
-route --> gives access to routing tables 
-netstat -rn [finds gatweay address] 
-
-sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
-dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
-
-netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
-
-
-(BROADCAST MODE)
 sudo ifconfig wlan0 down
 sudo airmon-ng check
 sudo airmon-ng check kill
 sudo airmon-ng start wlan0
 
-(TO FIND GATEWAY ADDRESS) 
-
-(FIND GATEWAY ADDR)
+---------------------------------------------------QUICK-WEBSERVER-----------------------------------------------
 
 
--------------------QUICK-WEBSERVER---------------------
 python3 -m http.server
 function Main() {
 	python -m http.server 9999
@@ -83,7 +20,13 @@ function Main() {
 	
 }
 
----------------------SHRED_LOG_DATA---------------------------
+------------------------------------------------------AP-SPOOFING------------------------------------------------
+
+sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
+airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+
+
+------------------------------------------------------SHRED_LOG_DATA------------------------------------------------
 
 ## NMAP SCRIPT LOCATION 
 ls -al /usr/share/nmap/scripts/ 
@@ -136,11 +79,43 @@ netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT
 ########## SHRED ALL DATA ################
 
 ## make abunch of differnt APS 
-sudo mdk3 wlx0013eff5483f b -c 1 -f ./data/data.lst ## update data.txt with spooffed ap 
-airodump-ng wlx0013eff5483f -c 11 ## use to monitor local APS 
+
+-------------------------------------- BASIC RECON --------------------------------------------
+ 
+hciconfig dev_name up 
+sdptool browse MAC_ADDRESS 
+btscanner # launches GUI interface 
+##
+bettercap 
+ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon off 
+ble.show 
+ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+##ss
+192.168.0.0/24 > 192.168.0.37  » net.show
+192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
+192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
+192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
+192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
+
+
+
+netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
+netcat -all --> [scans for other protocols (udp and tcp)] 
+
+netlookup <host_name> --> reveals ip
+route --> gives access to routing tables 
+netstat -rn [finds gatweay address] 
+
+sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
+dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
+
+netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
+
 
 
 ------------------------------------- BLUETOOTHNESS ------------------------------------
+
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
 hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
 man hciconfig 
