@@ -51,7 +51,7 @@ shred -zu /var/log/auth.log ## safely overwrite logs with 0's and 1's
 truncate -s 0 /var/log/auth.log 
 
 
---------------------- STAY ANONYMOUS ---------------------------
+------------------------------------------------------ STAY ANONYMOUS ------------------------------------------------------
 
 i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
 tor + proxy 
@@ -80,7 +80,7 @@ netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT
 
 ## make abunch of differnt APS 
 
--------------------------------------- BASIC RECON --------------------------------------------
+------------------------------------------------------ BASIC RECON ------------------------------------------------------
  
 hciconfig dev_name up 
 sdptool browse MAC_ADDRESS 
@@ -114,7 +114,7 @@ netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant foll
 
 
 
-------------------------------------- BLUETOOTHNESS ------------------------------------
+------------------------------------------------------ BLUETOOTHNESS ------------------------------------------------------
 
  https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
 hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
@@ -159,7 +159,7 @@ ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV
 192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
 
 
--------------------------------- FRAMEWORK - wifi 802.11  **************************************
+------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
 (start armitage)
 sudo msfconsole 
