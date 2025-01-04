@@ -5,6 +5,8 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
+-------------------- BASIC RECON -----------------------------------
+
 netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
 netcat -all --> [scans for other protocols (udp and tcp)] 
 
@@ -17,6 +19,13 @@ dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDO
 
 netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
 
+--------------------- STAY ANONYMOUS ---------------------------
+
+i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
+tor + proxy 
+vpn (most cant be trusted) 
+
+-------------------------------- FRAMEWORK WORK 00000000000000000000000000000000000
 
 (start armitage)
 sudo msfconsole 
@@ -513,13 +522,12 @@ wpa_supplicant/hostap
 hostapd # to create AP for wifi sharing 
 wpa_supplicant # allows scanning and connection to AP 
 
-#### IP2ROUTER --> File sharing / hosting 
-i2prouter start 
 
 ### INSTALL ALL KALI DEPENDENCIES 
 apt install kali-linux-everything 
 
 
+-------------------------------[NMAP]--------------------------------------------------
 
 
 ############ NMAP #############
@@ -588,6 +596,8 @@ nmap cpanel.dedicatedglass.com/24 -oX /home/frank/nmap.xml
 sudo nmap -sP -n 192.168.0.0/24 ## nmap to return mac address
 sudo nmap -sV --scripts=vulscan xxxx 
 
+
+-------------------------------[NMAP]--------------------------------------------------
 
 
 #############################
@@ -811,12 +821,12 @@ besside-ng en0 -c 6 -b
 airodump-ng wlx0013eff5483f --encrypt wep
 
 
+--------------------- WEB APP ==================
 #### GOOGLE DORKS ###
 # TO FIND NONSECURE LINKS ON WEBSERVER
 site:dedicatedglass.com inurl:http
 # TO DORK FOR LOGFILES
 Allintext:password textfile:log after:2018
-
 
 
 ### WEBSERVER ENUMERATION ###
