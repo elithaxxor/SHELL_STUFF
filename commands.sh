@@ -76,7 +76,22 @@ netsh int ipv4 set glob defaultcurhoplimit=65
 netsh int ipv6 set glob defaultcurhoplimit=65
 netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT 
 
-########## SHRED ALL DATA ################
+
+### LINUX (default ttl=64)
+iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
+########################
+
+--> OPEN SSL ENCRYPTION
+Private key
+openssl genrsa -aes-256-cbc -out macair.key 4096
+openssl genrsa -aes-256-cbc -out macair.key 4096
+# Public key
+openssl rsa -in frank.key -pubout > frankpublic.key
+# verification file
+### making signed encryption
+openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
+# to sign
+openssl base64 -in signer -out verifcation.enc
 
 ## make abunch of differnt APS 
 
@@ -161,14 +176,59 @@ ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV
 
 ------------------------------------------------------ FRAMEWORK - NMAP SCANNING 802.11  ------------------------------------------------------
 
-(start armitage)
-sudo msfconsole 
-sudo msfrpcd -P pass
-sudo msfrpcd -U msf -P pass --ssl
-sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
-sudo armitage 
+ls -al /usr/share/nmap/scripts/ 
+
+nmap -sV -pN xx # basic nmap scan 
+nmap -p local_ip_doman/24 -oG nmap_out.txt 
+nmap 192.xxx -oX /dir/file.xml ## to output nmap to .xml 
+nmap -A -Pn xxx/0/24 # os scan 
+nmap -sA xxxx # tcp-ack scan --> unfilterd and filtered ports
+nmap -sI zombiehost.com domain.com 
+nmap -sW xxx # window scan 
+nmap -sV host,com -scrip dns-brute ## chain script 
 
 
+sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
+Sudo nmap -A -Pn  -v 76.172.85.231
+nmap -sI -v google.com 192.168.50.1                                        2 ⚙
+nmap -sW -v 192.168.50.1
+nmap -sn -v - A--version-intenstity=9 192.168.0.0/24 ## nmap to find who's on Lan (subnet) #####
+
+cd /usr/share/nmap/scripts
+nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
+nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
+nmap --script nmap-vulners/ -sV www.securitytrails.com
+nmap --script nmap-vulners/ -sV 11.22.33.44
+nmap --script nmap-vulners/,vulscan/ -sV yourwebsite.com
+nmap -Pn --script vuln 192.168.1.105
+echo "scanning for open ports"
+nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
+
+echo "scanning for open ports"
+nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
+
+nmap -Sn xxx.xxx # ping scan 
+nmap -sL # list scan, returns device name 
+nmap -Pn # returns oepn ports . devname and mac address
+nmap -Sn --traceroute xxx.xx/24 
+nmap -Sn # ping scan 
+nmap -sL # list scan returns device and if its up or down 
+nmap -Pn # returns oepn port, best used with direct IP 
+nmap -Sn --traceroute ip/24 
+nmap ip.25 -p1-6000 # specify port 
+nmap -sV # find the service version 
+nmap -sV xxx.xxx --version-intensity=9
+nmap -o xxx --oscan-guess 
+nmap -A xx.xx version-intensity=9 
+nmap -sV -A --script=vulners ip --version intesnsity=9 
+nmap -sV -A xxx.xxx --version-intesity=9 
+
+## php vulnerability
+nmap -sV --script=http-php-version testphp.vulnweb.com
+nmap 192.168.50.1 -oX /home/frank/nmapout.xml
+nmap cpanel.dedicatedglass.com/24 -oX /home/frank/nmap.xml
+sudo nmap -sP -n 192.168.0.0/24 ## nmap to return mac address
+sudo nmap -sV --scripts=vulscan xxxx 
 
 (PORT SCAN WITH IplisT)
 sudo nmap -iL iplist.txt
@@ -224,6 +284,10 @@ nmap -A -sP 192.168.1.0/24
 (SCAN DEVICE SPECIFIC PORTS)
 Sudo nmap -A -sS -O 192.168.86.35
 
+
+------------------------------------------------------ FRAMEWORK - [OTHER]  802.11  ------------------------------------------------------
+
+
 (AUTOPWN - SCAN ROUTER FOR VULN)
 rsf (AutoPwn) > use scanners/autopwn
 rsf (AutoPwn) > show options
@@ -231,6 +295,12 @@ rsf (AutoPwn) > set target 192.168.64.1
 rsf (AutoPwn) > run
 
 
+(start armitage)
+sudo msfconsole 
+sudo msfrpcd -P pass
+sudo msfrpcd -U msf -P pass --ssl
+sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
+sudo armitage 
 
 
 
@@ -371,22 +441,6 @@ tempmailer.de
 
 
 ########################
-
-### LINUX (default ttl=64)
-iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
-########################
-
-OPEN SSL ENCRYPTION
-Private key
-openssl genrsa -aes-256-cbc -out macair.key 4096
-openssl genrsa -aes-256-cbc -out macair.key 4096
-# Public key
-openssl rsa -in frank.key -pubout > frankpublic.key
-# verification file
-### making signed encryption
-openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
-# to sign
-openssl base64 -in signer -out verifcation.enc
 
 
 ##### INTRUSION DETECTION #### 
@@ -619,57 +673,7 @@ apt install kali-linux-everything
 # nmap --opem xxx.xxx 
 
 #############################
-nmap -sV -pN xx # basic nmap scan 
-nmap -p local_ip_doman/24 -oG nmap_out.txt 
-nmap 192.xxx -oX /dir/file.xml ## to output nmap to .xml 
-nmap -A -Pn xxx/0/24 # os scan 
-nmap -sA xxxx # tcp-ack scan --> unfilterd and filtered ports
-nmap -sI zombiehost.com domain.com 
-nmap -sW xxx # window scan 
-nmap -sV host,com -scrip dns-brute ## chain script 
 
-
-sudo nmap -sV -Pn -v ns8231.hostgator.com (#port knocking)
-Sudo nmap -A -Pn  -v 76.172.85.231
-nmap -sI -v google.com 192.168.50.1                                        2 ⚙
-nmap -sW -v 192.168.50.1
-nmap -sn -v - A--version-intenstity=9 192.168.0.0/24 ## nmap to find who's on Lan (subnet) #####
-
-cd /usr/share/nmap/scripts
-nmap --script nmap-vulners/ -sV -sS -Pn -A -v 192.168.50.1/24 --version-intensity=9
-nmap -sV --script=vulscan/vulscan.nse 192.168.50.111
-nmap --script nmap-vulners/ -sV www.securitytrails.com
-nmap --script nmap-vulners/ -sV 11.22.33.44
-nmap --script nmap-vulners/,vulscan/ -sV yourwebsite.com
-nmap -Pn --script vuln 192.168.1.105
-echo "scanning for open ports"
-nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
-
-echo "scanning for open ports"
-nmap -iL probed.txt -T5 -oA scans/port_scan.txt -V
-
-nmap -Sn xxx.xxx # ping scan 
-nmap -sL # list scan, returns device name 
-nmap -Pn # returns oepn ports . devname and mac address
-nmap -Sn --traceroute xxx.xx/24 
-nmap -Sn # ping scan 
-nmap -sL # list scan returns device and if its up or down 
-nmap -Pn # returns oepn port, best used with direct IP 
-nmap -Sn --traceroute ip/24 
-nmap ip.25 -p1-6000 # specify port 
-nmap -sV # find the service version 
-nmap -sV xxx.xxx --version-intensity=9
-nmap -o xxx --oscan-guess 
-nmap -A xx.xx version-intensity=9 
-nmap -sV -A --script=vulners ip --version intesnsity=9 
-nmap -sV -A xxx.xxx --version-intesity=9 
-
-## php vulnerability
-nmap -sV --script=http-php-version testphp.vulnweb.com
-nmap 192.168.50.1 -oX /home/frank/nmapout.xml
-nmap cpanel.dedicatedglass.com/24 -oX /home/frank/nmap.xml
-sudo nmap -sP -n 192.168.0.0/24 ## nmap to return mac address
-sudo nmap -sV --scripts=vulscan xxxx 
 
 
 -------------------------------[NMAP]--------------------------------------------------
