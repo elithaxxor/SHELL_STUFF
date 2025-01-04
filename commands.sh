@@ -5,12 +5,16 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
-dsniff - practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE. 
-netstat - helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP 
-netcat -all --> scans for other protocols (udp and tcp) 
+dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
+netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
+netcat -all --> [scans for other protocols (udp and tcp)] 
 
 netlookup <host_name> --> reveals ip
 route --> gives access to routing tables 
+netstat -rn [finds gatweay address] 
+
+sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
+
 
 (start armitage)
 sudo msfconsole 
@@ -28,14 +32,11 @@ sudo airmon-ng check kill
 sudo airmon-ng start wlan0
 
 (TO FIND GATEWAY ADDRESS) 
-netstat -rn
 
 (FIND GATEWAY ADDR)
-route
 
 
-(DISCOVER WHOS ON NETWORK)
-sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8
+
 
 
 (PORT SCAN WITH IplisT)
