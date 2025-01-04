@@ -19,22 +19,6 @@ dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDO
 
 netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
 
---------------------- STAY ANONYMOUS ---------------------------
-
-i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
-tor + proxy 
-vpn (most cant be trusted) 
-
--------------------------------- FRAMEWORK WORK 00000000000000000000000000000000000
-
-(start armitage)
-sudo msfconsole 
-sudo msfrpcd -P pass
-sudo msfrpcd -U msf -P pass --ssl
-sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
-sudo armitage 
-
-
 
 (BROADCAST MODE)
 sudo ifconfig wlan0 down
@@ -47,6 +31,81 @@ sudo airmon-ng start wlan0
 (FIND GATEWAY ADDR)
 
 
+
+
+--------------------- STAY ANONYMOUS ---------------------------
+
+i2prouter start [#### IP2ROUTER --> File sharing / hosting ]
+tor + proxy 
+vpn (most cant be trusted) 
+https://inteltechniques.com/ [THrow away emails]
+tempmailer.de 
+https://api.wigle.net/ [excellent gps and realtime tracking tool] 
+shodan.io ## --> d[simular to wiggle, but contains open streams and devices] 
+https://null-byte.wonderhowto.com/how-to/wardrive-android-phone-map-vulnerable-networks-0176136/
+
+grabify.link  ## --> track usersr 
+https://nvd.nist.gov/developers/vulnerabilities
+https://www.exploit-db.com/
+securityfocus.com
+https://sur.ly/i/breachforums.com/
+namecheckup.com ## --> osnit 
+https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
+
+
+
+------------------------------------- BLUETOOTHNESS ------------------------------------
+ https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
+hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
+man hciconfig 
+man hcitool 
+man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
+man btscanner 
+
+hciconfig dev_name up 
+sdptool browse MAC_ADDRESS 
+btscanner # launches GUI interface 
+
+#### BETTERCAP (ettercap replacement) ####
+## https://www.bettercap.org/legacy/ 
+# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
+
+git clone https://github.com/evilsocket/bettercap
+cd bettercap
+bundle install
+gem build bettercap.gemspec
+sudo gem install bettercap*.gem
+
+
+sudo apt-get install build-essential ruby-dev libpcap-dev
+apt install golang
+go get github.com/bettercap/bettercap
+cd $GOPATH/src/github.com/bettercap/bettercap
+make build
+sudo make install
+sudo bettercap
+bettercap 
+
+ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon off 
+ble.show 
+ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+##ss
+192.168.0.0/24 > 192.168.0.37  » net.show
+192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
+192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
+192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
+192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
+
+
+-------------------------------- FRAMEWORK - wifi 802.11  **************************************
+
+(start armitage)
+sudo msfconsole 
+sudo msfrpcd -P pass
+sudo msfrpcd -U msf -P pass --ssl
+sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
+sudo armitage 
 
 
 
@@ -234,54 +293,12 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 
 
 
-
+-----------------------------FEW TIPS AND TRICKS---------------------------
 
 ########################
 ### OSNIT / SPY BLUETOOTH #### 
 ## unlike wifi, bluetooth negotates a key ones and stores it. this happens on first handshake, making packet inseretion and listneing harder 
-# https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
-hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
-man hciconfig 
-man hcitool 
-man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
-man btscanner 
-
-hciconfig dev_name up 
-sdptool browse MAC_ADDRESS 
-btscanner # launches GUI interface 
-
-#### BETTERCAP (ettercap replacement) ####
-## https://www.bettercap.org/legacy/ 
-# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
-
-git clone https://github.com/evilsocket/bettercap
-cd bettercap
-bundle install
-gem build bettercap.gemspec
-sudo gem install bettercap*.gem
-
-
-sudo apt-get install build-essential ruby-dev libpcap-dev
-apt install golang
-go get github.com/bettercap/bettercap
-cd $GOPATH/src/github.com/bettercap/bettercap
-make build
-sudo make install
-sudo bettercap
-
-##
-bettercap 
-ble.recon on  ## returns the range and device name of enabled BT devices 
-ble.recon off 
-ble.show 
-ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
-##
-192.168.0.0/24 > 192.168.0.37  » net.show
-192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
-192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
-192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
-192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
-
+#
 ###########################
 
 
