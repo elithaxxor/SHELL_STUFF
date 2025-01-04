@@ -5,7 +5,6 @@
 #
 #  Created by a-robot on 3/14/22.
 #  
-dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
 netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
 netcat -all --> [scans for other protocols (udp and tcp)] 
 
@@ -14,7 +13,9 @@ route --> gives access to routing tables
 netstat -rn [finds gatweay address] 
 
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
+dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
 
+netcat [nc] --> [is a creepy 
 
 (start armitage)
 sudo msfconsole 
