@@ -15,7 +15,8 @@ netstat -rn [finds gatweay address]
 sudo netdiscover -i eth0 -r 192.168.64.1/24,/16,/8 [ [DISCOVER WHOS ON NETWORK]
 dsniff - [practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE.] 
 
-netcat [nc] --> [is a creepy 
+netcat [nc] --> [is a creepy, it can be used to follow you oce or persisant follwig you with a fwe commands. it can watch you upload/download or do anything on the networkthat hpersists) 
+
 
 (start armitage)
 sudo msfconsole 
