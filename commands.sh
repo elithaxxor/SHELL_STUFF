@@ -14,6 +14,8 @@ sudo armitage
 
 dsniff - practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE. 
 netstat - helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP 
+netcat -all --> scans for other protocols (udp and tcp) 
+
 
 (BROADCAST MODE)
 sudo ifconfig wlan0 down
