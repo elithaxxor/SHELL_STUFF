@@ -1,6 +1,12 @@
 #!/bin/sh
 
 
+----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
+$ nmcli device wifi list 
+nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
+ip address show
+apt install network-manager-openvpn
+
 
 
 -----------------------------------------------------BROADCAST-MODE---------------------------------------------
