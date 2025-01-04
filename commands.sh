@@ -6,6 +6,50 @@
 #  Created by a-robot on 3/14/22.
 #  
 -------------------- BASIC RECON -----------------------------------
+ https://null-byte.wonderhowto.com/how-to/bt-recon-snoop-bluetooth-devices-using-kali-linux-0165049/
+hciconfig -h ## bluetooth context manager, similar to wifi manager (help menu)
+man hciconfig 
+man hcitool 
+man sdptool  ## allows queries on bluetooth servers --> permeessions / avail services 
+man btscanner 
+
+hciconfig dev_name up 
+sdptool browse MAC_ADDRESS 
+btscanner # launches GUI interface 
+
+#### BETTERCAP (ettercap replacement) ####
+## https://www.bettercap.org/legacy/ 
+# https://null-byte.wonderhowto.com/how-to/target-bluetooth-devices-with-bettercap-0194421/
+
+git clone https://github.com/evilsocket/bettercap
+cd bettercap
+bundle install
+gem build bettercap.gemspec
+sudo gem install bettercap*.gem
+
+
+sudo apt-get install build-essential ruby-dev libpcap-dev
+apt install golang
+go get github.com/bettercap/bettercap
+cd $GOPATH/src/github.com/bettercap/bettercap
+make build
+sudo make install
+sudo bettercap
+
+##
+bettercap 
+ble.recon on  ## returns the range and device name of enabled BT devices 
+ble.recon off 
+ble.show 
+ble.enum MAC_ADDRESS  # PROVIDES MORE INFO ON BLUETOOTH DEV 
+##ss
+192.168.0.0/24 > 192.168.0.37  » net.show
+192.168.0.0/24 > 192.168.0.37  » ble.recon on ### BLUETOOTH SNIFFING MODULE 
+192.168.0.0/24 > 192.168.0.37  » ble.show  ### IDENTIFY HOSTS TO PROBE 
+192.168.0.0/24 > 192.168.0.37  » ble.enum 56:73:e6:ea:ce:c5 ### SCAN AND INTERACT W/ DEVICES 
+192.168.0.0/24 > 192.168.0.37  » ble.write 7e:dc:48:7c:77:ea 69d1d8f345e149a898219bbdfdaad9d9 ffffffffffffffff ### writting fffff to the writeable field found 
+
+
 
 netstat - [helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP] 
 netcat -all --> [scans for other protocols (udp and tcp)] 
@@ -52,6 +96,11 @@ https://sur.ly/i/breachforums.com/
 namecheckup.com ## --> osnit 
 https://neatnik.net/steganographr/ --> stenography (*to hide tracks) 
 
+### MANGLE TTL 
+# WINDOWS 
+netsh int ipv4 set glob defaultcurhoplimit=65
+netsh int ipv6 set glob defaultcurhoplimit=65
+netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT 
 
 
 ------------------------------------- BLUETOOTHNESS ------------------------------------
@@ -289,6 +338,13 @@ nano targets.txt
 python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --local
 
 
+#### TO MIRROR WEBPAGE DATA (EXACT COPY)
+sudo apt install httrack webhttrack
+httprack -w domain.com
+## throw-away email ## 
+tempmailer.de 
+
+
 ################################################
 
 
@@ -303,11 +359,6 @@ python3 h8mail.py -t '/root/h8mail/targets.txt' -bc '~/BreachCompilation' --loca
 
 
 ########################
-### MANGLE TTL 
-# WINDOWS 
-netsh int ipv4 set glob defaultcurhoplimit=65
-netsh int ipv6 set glob defaultcurhoplimit=65
-netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT 
 
 ### LINUX (default ttl=64)
 iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
@@ -362,14 +413,9 @@ sudo bash airgeddon.sh
 
 
 
-#### TO MIRROR WEBPAGE DATA (EXACT COPY)
-sudo apt install httrack webhttrack
-httprack -w domain.com
 
 
 
-## throw-away email ## 
-tempmailer.de 
 
 
 
