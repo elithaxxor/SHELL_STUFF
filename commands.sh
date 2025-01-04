@@ -7,7 +7,35 @@ nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
 apt install network-manager-openvpn
 
+### IFRENAME ### 
+ifrename # to rename wireless 
+iwevent # display wireless events 
+iwgetid # reports current essid 
+iwlist # scan savailable aps or essid 
+iwspy # monitors iw nodes and records strenght and quality of signal 
 
+
+##### NMCLI #####
+nmcli general status 
+nmcli general hostname # get and change sys hostname 
+nmcli general permissions # show the permssions available to caller 
+nmcli connection show --active 
+nmcli modify 
+
+nmcli networking on off # disable network control management 
+nmcli networking connectivity 
+
+nmcli radio all   ## show status for all devices 
+nmcli radio wwan  ## for tethered devices 
+nmcli radio wifi  ## show status for wifi devices 
+
+nmcli device status
+nmcli device showstatus
+nmcli device showstatus wlan0 
+nmcli device wifi connect # connect to near hotspot
+nmcli device wifi hotspot # create a wifi hotspot 
+
+wifi-show-password
 
 -----------------------------------------------------BROADCAST-MODE---------------------------------------------
 
@@ -15,6 +43,36 @@ sudo ifconfig wlan0 down
 sudo airmon-ng check
 sudo airmon-ng check kill
 sudo airmon-ng start wlan0
+
+---------------------------------------------------PGP-GPG-----------------------------------------------
+
+
+######## OPEN SSL #######
+# use private key to sign secret.enc. 
+openssl genrsa -aes-256-cbc -out newkey.key 4096 # generate pvt key 
+openssl rsa -in newkey.key -pubout > public.key # to generate public key 
+openssl rsatl --encrypt -inkey private.key -pubout > public.key -pubin -in messsage.txt -out message.enc ## encrypt a file 
+openssl rsatl --decrypt -inkey myprivate.key -in message.enc > clear_view.txt 
+openssl genrsa -des3 -out another_pvt_key.key 4096 ## to derive anothers public key 
+
+openssl rsautl --decruypt -inkey bob-put.key -in secret.enc > message.txt  # to decrypt mesg
+openssl dgst -sha256 -sign private.key -out signer secret.enc
+openssl base64 -in signer -out my_signature # to sign ssl 
+openssl dgst -sha256 -verify anothers_pub_key.key -signature signer secret.enc 
+
+
+--> OPEN SSL ENCRYPTION
+Private key
+openssl genrsa -aes-256-cbc -out macair.key 4096
+openssl genrsa -aes-256-cbc -out macair.key 4096
+# Public key
+openssl rsa -in frank.key -pubout > frankpublic.key
+# verification file
+### making signed encryption
+openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
+# to sign
+openssl base64 -in signer -out verifcation.enc
+
 
 ---------------------------------------------------QUICK-WEBSERVER-----------------------------------------------
 
@@ -86,18 +144,6 @@ netsh int ipv6 set glob defaultcurhoplimit=128 # <-- RESET BACK TO DEFUALT
 ### LINUX (default ttl=64)
 iptables -t mangle -I POSTROUTING 1 -j TTL --ttl-set 66
 ########################
-
---> OPEN SSL ENCRYPTION
-Private key
-openssl genrsa -aes-256-cbc -out macair.key 4096
-openssl genrsa -aes-256-cbc -out macair.key 4096
-# Public key
-openssl rsa -in frank.key -pubout > frankpublic.key
-# verification file
-### making signed encryption
-openssl dgst -sha256 -sign macair.key -out signer verifcation.enc
-# to sign
-openssl base64 -in signer -out verifcation.enc
 
 ## make abunch of differnt APS 
 
@@ -1182,20 +1228,6 @@ hosts
 free all
 
 
-
-
-######## OPEN SSL #######
-# use private key to sign secret.enc. 
-openssl genrsa -aes-256-cbc -out newkey.key 4096 # generate pvt key 
-openssl rsa -in newkey.key -pubout > public.key # to generate public key 
-openssl rsatl --encrypt -inkey private.key -pubout > public.key -pubin -in messsage.txt -out message.enc ## encrypt a file 
-openssl rsatl --decrypt -inkey myprivate.key -in message.enc > clear_view.txt 
-openssl genrsa -des3 -out another_pvt_key.key 4096 ## to derive anothers public key 
-
-openssl rsautl --decruypt -inkey bob-put.key -in secret.enc > message.txt  # to decrypt mesg
-openssl dgst -sha256 -sign private.key -out signer secret.enc
-openssl base64 -in signer -out my_signature # to sign ssl 
-openssl dgst -sha256 -verify anothers_pub_key.key -signature signer secret.enc 
 
 
 
