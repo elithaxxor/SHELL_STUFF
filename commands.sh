@@ -3,6 +3,9 @@
 
 ----------------------------------------------------CONNECTING[HEADLESS]-----------------------------------------
 $ nmcli device wifi list 
+## find mac for router (-a) and client (-c)
+netdiscover -r 192.168.50.1/24
+
 nmcli device wifi connect "MyWiFiNetwork" password "wifiPassword"
 ip address show
 apt install network-manager-openvpn
