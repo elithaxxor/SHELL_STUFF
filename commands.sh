@@ -12,6 +12,9 @@ sudo msfrpcd -U msf -P pass --ssl
 sudo msfrpcd -U msf -P pass -a 127.0.0.1 --ssl
 sudo armitage 
 
+dsniff - practically snniffing for any password (FTP HTTP) WHILE ON NETWORK MDODE. 
+netstat - helps display network activity;  (like TCP and UDP) are being used. and rouing. --- outputs mainly TCP 
+
 (BROADCAST MODE)
 sudo ifconfig wlan0 down
 sudo airmon-ng check
